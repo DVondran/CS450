@@ -4,7 +4,7 @@
 //
 // Benchmark Template
 // 
-// Author: Mr. Seisler
+// Author: David Vondran
 //
 // compile line:
 // g++ -o bench_tmp benchmark_template.cpp -O3
