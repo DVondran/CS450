@@ -43,12 +43,20 @@ int main(int argc, char *argv[])
 	double *B = new double[N];
 	double *C = new double[N];
 	double *D = new double[N];
+	
+	for(int i = 0; i < N -1; i++){
+		A[i] = 0e0;
+		B[i] = 1e0;
+		C[i] = 2e0;
+		D[i] = 3e0;
+		printf("%f\n", i);
+	}
 
 
 	get_walltime(&d_S);  // get start time
 	// place test code here
 	for(int i = 0; i < N - 1; i++){
-		if(C[i] < 0.0){
+		if(C[i] < 0e0){
 			A[i] = B[i] - C[i] * D[i];
 		}
 		else{

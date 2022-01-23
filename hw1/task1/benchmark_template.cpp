@@ -49,10 +49,10 @@ int main(int argc, char *argv[])
 	double *D = new double[N];
 	
 	for(int i = 0; i < N -1; i++){
-		A[i] = 0.0;
-		B[i] = 1.0;
-		C[i] = 2.0;
-		D[i] = 3.0;
+		A[i] = 0e0;
+		B[i] = 1e0;
+		C[i] = 2e0;
+		D[i] = 3e0;
 		printf("%f\n", i);
 	}
 
