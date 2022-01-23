@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	double *C = new double[N];
 	double *D = new double[N];
 	
-	for(int i = 0; i < N, i++){
+	for(int i = 0; i < N; i++){
 		A[i] = 0.0;
 		B[i] = 1.0;
 		C[i] = 2.0;
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 	get_walltime(&d_E); // get end time stamp
 
 	// report results here
-	int MFLOPS = (double)R*(double)N*2/((d_E - d_S)*1.0e6)
+	int MFLOPS = (double)R*(double)N*2/((d_E - d_S)*1.0e6);
 	printf("Elapsed time: %f\n", d_E - d_S);
 	printf("MFLOPS: %f\n", MFLOPS);
 	
