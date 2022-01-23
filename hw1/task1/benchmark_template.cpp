@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
 		B[i] = 1e0;
 		C[i] = 2e0;
 		D[i] = 3e0;
-		printf("%f\n", i);
 	}
 
 
@@ -73,7 +72,7 @@ int main(int argc, char *argv[])
 	get_walltime(&d_E); // get end time stamp
 
 	// report results here
-	int MFLOPS = (double)R*(double)N*2/((d_E - d_S)*1.0e6);
+	int MFLOPS = (double)R*(double)N*2e0/((d_E - d_S)*1e6);
 	printf("Elapsed time: %f\n", d_E - d_S);
 	printf("MFLOPS: %f\n", MFLOPS);
 	

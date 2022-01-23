@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	get_walltime(&d_E); // get end time stamp
 
 	// report results here
-	int MFLOPS = (double)R*(double)*2/((d_E - d_S)*1.0e6);
+	int MFLOPS = (double)R*(double)*2e0/((d_E - d_S)*1.0e6);
 	printf("Elapsed time: %f\n", d_E - d_S);
 	printf("MFLOPS: %f\n", MFLOPS);
 	
