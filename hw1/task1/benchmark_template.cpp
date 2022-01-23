@@ -53,15 +53,6 @@ int main(int argc, char *argv[])
 		B[i] = 1e0;
 		C[i] = 2e0;
 		D[i] = 3e0;
-		printf("%f\n", B[i]);
-	}
-	/*
-	
-	for(int i = 0; i < N; i++){
-		A[i] = 0e0;
-		B[i] = 1e0;
-		C[i] = 2e0;
-		D[i] = 3e0;
 		printf("%f\n", i);
 	}
 
@@ -71,7 +62,7 @@ int main(int argc, char *argv[])
 	
 	for(int i = 0; i < R; i++){
 		for(int j=0; j < N; j++){
-			A[i] = B[i] + C[i] * D[i];
+			A[j] = B[j] + C[j] * D[j];
 		}
 		if(A[2] < 0){
 			dummy(A, B, C, D);
@@ -89,7 +80,6 @@ int main(int argc, char *argv[])
 	// perform cleanup here
 	
 
-	*/
 	return 0;
 }
 
