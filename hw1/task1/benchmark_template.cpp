@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 		B[i] = 1.0;
 		C[i] = 2.0;
 		D[i] = 3.0;
-		printf("%f\n", N);
+		printf("%f\n", i);
 	}
 
 
