@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
 	get_walltime(&d_S);  // get start time
 	// place test code here
-	for(int i = 0; i < N; i++){
+	for(int i = 0; i < N - 1; i++){
 		if(C[i] < 0.0){
 			A[i] = B[i] - C[i] * D[i];
 		}

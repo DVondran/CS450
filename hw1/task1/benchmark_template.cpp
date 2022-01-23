@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	double *C = new double[N];
 	double *D = new double[N];
 	
-	for(int i = 0; i < N; i++){
+	for(int i = 0; i < N -1; i++){
 		A[i] = 0.0;
 		B[i] = 1.0;
 		C[i] = 2.0;
@@ -59,8 +59,8 @@ int main(int argc, char *argv[])
 	get_walltime(&d_S);  // get start time
 	// place test code here
 	
-	for(int i = 0; i < R; i++){
-		for(int j=0; j < N; j++){
+	for(int i = 0; i < R - 1; i++){
+		for(int j=0; j < N - 1; j++){
 			A[i] = B[i] + C[i] * D[i];
 		}
 		if(A[2] < 0){
