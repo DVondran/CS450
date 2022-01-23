@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 		B[i] = 1e0;
 		C[i] = 2e0;
 		D[i] = 3e0;
-		printf("%f\n", i);
+		printf("%f\n", A[i]);
 	}
 	/*
 	
