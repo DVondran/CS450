@@ -28,13 +28,7 @@ void get_walltime(double* wcTime) {
 
 }
 
-///////////////////////////////////////////////////////////////////////
-//
-//
-///////////////////////////////////////////////////////////////////////
-int main(int argc, char *argv[])
-{
-
+void benchmark(int state){
 	// Initialize stuff here...
 	double d_S,d_E;
 	int N = 1000;
@@ -47,11 +41,25 @@ int main(int argc, char *argv[])
 	for(int i = 0; i < N; i++){
 		A[i] = 0e0;
 		B[i] = 1e0;
-		C[i] = 2e0;
 		D[i] = 3e0;
 	}
-
-
+	
+	if(state == 0){
+		for(int i = 0; i < N; i++){
+			C[i] = 1e0;
+		}
+	}
+	else if(state == 1){
+		for(int i = 0; i < N; i++){
+			C[i] = -(1e0);
+		} 
+	}
+	else{
+		for(int i = 0; i < N; i++){
+			C[i] = (rand() % 2) - 1;
+		}
+	}
+	
 	get_walltime(&d_S);  // get start time
 	// place test code here
 	for(int i = 0; i < N; i++){
@@ -71,6 +79,18 @@ int main(int argc, char *argv[])
 	printf("Elapsed time: %f\n", d_E - d_S);
 	printf("MFLOPS: %f\n", MFLOPS);
 	
+}
+
+///////////////////////////////////////////////////////////////////////
+//
+//
+///////////////////////////////////////////////////////////////////////
+int main(int argc, char *argv[])
+{
+	int vals[3] = {0, 1, 2}
+	for(int i = 0; i < 3; i++){
+		benchmark(i);
+	}
 	
 	// perform cleanup here
 	
