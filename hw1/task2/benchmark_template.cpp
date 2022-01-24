@@ -88,7 +88,7 @@ void benchmark(int state){
 ///////////////////////////////////////////////////////////////////////
 int main(int argc, char *argv[])
 {
-	int vals[3] = {0, 1, 2}
+	int vals[3] = {0, 1, 2};
 	for(int i = 0; i < 3; i++){
 		benchmark(i);
 	}
