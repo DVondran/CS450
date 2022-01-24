@@ -32,16 +32,10 @@ void dummy(double* one, double* two, double* three, double* four){
 	;
 }
 
-///////////////////////////////////////////////////////////////////////
-//
-//
-///////////////////////////////////////////////////////////////////////
-int main(int argc, char *argv[])
-{
-
+void benchmark(int N_in, int R_in){
 	// Initialize stuff here...
-	int N = 1000;
-	int R = 1000000;
+	int N = N_in;
+	int R = R_in;
 	double d_S,d_E;
 	double *A = new double[N];
 	double *B = new double[N];
@@ -75,6 +69,21 @@ int main(int argc, char *argv[])
 	double MFLOPS = (double)R*(double)N*2e0/((d_E - d_S)*1e6);
 	printf("Elapsed time: %f\n", d_E - d_S);
 	printf("MFLOPS: %f\n", MFLOPS);
+}
+
+///////////////////////////////////////////////////////////////////////
+//
+//
+///////////////////////////////////////////////////////////////////////
+int main(int argc, char *argv[])
+{
+	double vals[7] = {10e1, 10e2, 10e3, 10e4, 10e5, 10e6, 10e7};
+	for(int i = 0; i < 7; i++){
+		int N = vals[i];
+		int R = 1000000 / N;
+		benchmark(N, R);
+	}
+	
 	
 	// perform cleanup here
 	
