@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -O3 -std=c++11
+CFLAGS= -O3 -mavx -std=c++11
 DEPS = 
 OBJ = benchmark_template.o
 
