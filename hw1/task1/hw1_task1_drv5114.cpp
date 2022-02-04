@@ -2,7 +2,7 @@
 //
 // CMPSC450 
 //
-// Benchmark Template
+// Benchmark Template1
 // 
 // Author: David Vondran
 //
