@@ -68,8 +68,9 @@ void benchmark(int N_in, int R_in){
 
 	// report results here
 	double MFLOPS = (double)R*(double)N*2e0/((d_E - d_S)*1e6);
-	printf("Elapsed time: %f\n", d_E - d_S);
-	printf("MFLOPS: %f\n", MFLOPS);
+	//printf("Elapsed time: %f\n", d_E - d_S);
+	//printf("MFLOPS: %f\n", MFLOPS);
+	printf("%i, %i, %f, %f\n", R, N, d_E-d_S, MFLOPS);
 }
 
 ///////////////////////////////////////////////////////////////////////
