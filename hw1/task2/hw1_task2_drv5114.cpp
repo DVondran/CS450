@@ -90,11 +90,11 @@ void benchmark(int state, int N_in, int R_in){
 ///////////////////////////////////////////////////////////////////////
 int main(int argc, char *argv[])
 {
-	for(int i = 0; i < 3; i++){
+	for(int j = 0; j < 3; j++){
 		for(double i = 0; i < 7; i += .10){
 			int N = pow(10, i);
 			int R = 100000000 / N;
-			benchmark(i, N, R);
+			benchmark(j, N, R);
 	}
 	}
 	
