@@ -29,11 +29,11 @@ void get_walltime(double* wcTime) {
 
 }
 
-void benchmark(int state){
+void benchmark(int state, int N_in, int R_in){
 	// Initialize stuff here...
 	double d_S,d_E;
-	int N = 1000;
-	int R = 1000000;
+	int N = N_in;
+	int R = R_in;
 	double *A = new double[N];
 	double *B = new double[N];
 	double *C = new double[N];
@@ -79,8 +79,7 @@ void benchmark(int state){
 
 	// report results here
 	double MFLOPS = (double)R*(double)N*2e0/((d_E - d_S)*1.0e6);
-	printf("Elapsed time: %f\n", d_E - d_S);
-	printf("MFLOPS: %f\n", MFLOPS);
+	printf("%i, %i, %i, %f, %f\n", state, R, N, d_E-d_S, MFLOPS);
 	
 }
 
@@ -90,9 +89,12 @@ void benchmark(int state){
 ///////////////////////////////////////////////////////////////////////
 int main(int argc, char *argv[])
 {
-	int vals[3] = {0, 1, 2};
 	for(int i = 0; i < 3; i++){
-		benchmark(i);
+		for(double i = 0; i < 7; i += .10){
+			int N = pow(10, i);
+			int R = 100000000 / N;
+			benchmark(i, N, R);
+	}
 	}
 	
 	// perform cleanup here
