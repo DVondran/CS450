@@ -1,14 +1,14 @@
 CC=g++
 CFLAGS= -O3 -mavx -std=c++11
 DEPS = 
-OBJ = benchmark_template.o
+OBJ = hw1_task2_drv5114.o
 
 %.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-benchmark_template: $(OBJ)
+hw1_task2_drv5114: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJ) benchmark_template
+	rm -f $(OBJ) hw1_task2_drv5114

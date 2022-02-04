@@ -74,7 +74,7 @@ echo "Current directory is `pwd`"
 # The directory you are put in to start with is your home directory. You can change to the directory directly (cd /storage/home/...) or change to the directory you submitted from using the PBS_O_WORKDIR environment variable.
 
 #-#-# Compile - put the path to your code here
-cd ~/CS450/hw1/task1/benchmark_template
+cd ~/CS450/hw1/task1/hw1_task1_drv5114
 make
 # We compile the code within the submission script here, but this is not required.  You can compile with a previous job (or on ACI-I) and just run code within jobs.  Be sure the modules used whdn compiling and running are the same.
 
@@ -84,7 +84,7 @@ echo "#-#-#Compilation completed and execution started at `date`"
 
 #-#-# Run
 echo "A"
-time ./benchmark_template
+time ./hw1_task1_drv5114
 #-#-# Echo
 echo "#-#-#Job Ended at `date`"
 # Output the time here for possible debugging purposes.
