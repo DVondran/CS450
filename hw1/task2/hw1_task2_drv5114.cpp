@@ -63,12 +63,14 @@ void benchmark(int state){
 	
 	get_walltime(&d_S);  // get start time
 	// place test code here
-	for(int i = 0; i < N; i++){
-		if(C[i] < 0e0){
-			A[i] = B[i] - C[i] * D[i];
-		}
-		else{
-			A[i] = B[i] + C[i] * D[i];
+	for(int j = 0; j < R; j++){
+		for(int i = 0; i < N; i++){
+			if(C[i] < 0e0){
+				A[i] = B[i] - C[i] * D[i];
+			}
+			else{
+				A[i] = B[i] + C[i] * D[i];
+			}
 		}
 	}
 
