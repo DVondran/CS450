@@ -79,19 +79,19 @@ void benchmark(int N_in, int R_in){
 ///////////////////////////////////////////////////////////////////////
 int main(int argc, char *argv[])
 {
-	//double vals[7] = {10e1, 10e2, 10e3, 10e4, 10e5, 10e6, 10e7};
+	/*
 	for(double i = 0; i < 7; i += .10){
 		int N = pow(10, i);
 		int R = 100000000 / N;
 		benchmark(N, R);
 	}
+	*/
 	
-	/*
 	int N = 1000;
 	int R = 1000000;
 	
 	benchmark(N,R);
-	*/
+	
 	
 	
 	// perform cleanup here
