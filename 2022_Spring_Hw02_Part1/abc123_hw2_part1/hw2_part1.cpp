@@ -1,5 +1,7 @@
 #include <math.h>
 
+//Testing
+
 // complex algorithm for evaluation
 void myfunc(double *s, double *mat, int *v, int length)
 {
