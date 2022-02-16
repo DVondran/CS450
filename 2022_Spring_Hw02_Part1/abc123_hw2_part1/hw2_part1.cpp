@@ -31,12 +31,16 @@ void myfunc(double *s, double *mat, int *v, int length)
 		val[i] = round(fmod(v[i],256));
 	}
 	
-	for (int j = 0; j < length; j ++)
+	for (int j = 0; j < length; j += 5)
 	{
 		int jlen = j * length;
 		for (int i = 0; i < length; i ++)
 		{
 			mat[i + jlen] = s[i + jlen]*(getSquaredVal(val[i]));
+			mat[i + (jlen+1)] = s[i + (jlen+1)]*(getSquaredVal(val[i]));
+			mat[i + (jlen+2)] = s[i + (jlen+2)]*(getSquaredVal(val[i]));
+			mat[i + (jlen+3)] = s[i + (jlen+3)]*(getSquaredVal(val[i]));
+			mat[i + (jlen+4)] = s[i + (jlen+4)]*(getSquaredVal(val[i]));
 		}
 	}
 }
