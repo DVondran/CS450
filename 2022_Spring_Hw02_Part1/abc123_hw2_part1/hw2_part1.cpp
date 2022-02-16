@@ -17,10 +17,14 @@ void myfunc(double *s, double *mat, int *v, int length)
 		for (int i = 0; i < length; i++)
 		{
 			val = round(fmod(v[i],256)); 
-			double sinval = sin(val)*sin(val);
-			double squaredval = sinval - (1 - (sinval));
-			mat[i + jlen] = s[i + jlen]*(squaredval);
+			mat[i + jlen] = s[i + jlen]*(getSquaredVal(val));
 		}
 	}
+}
+
+double getSquaredVal(double val)
+{
+	double sinval = sin(val)*sin(val);
+	return (sinval - (1 - (sinval)));
 }
 
