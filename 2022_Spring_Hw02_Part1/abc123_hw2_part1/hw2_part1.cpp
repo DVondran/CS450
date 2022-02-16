@@ -19,7 +19,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 			val = round(fmod(v[i],256));
 			//double sinval = sin(val)*sin(val);
 			//double squaredval = sin(val)*sin(val) - (1.0 - sin(val)*sin(val));
-			mat[i + jlen] = s[i + jlen]*(sin(val)*sin(val) - (1.0 - sin(val)*sin(val)));
+			mat[i + jlen] = s[i + jlen]*(sin(val)*sin(val) - (cos(val)*cos(val)));
 		}
 	}
 }
