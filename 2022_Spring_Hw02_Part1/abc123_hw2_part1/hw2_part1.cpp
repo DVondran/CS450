@@ -34,17 +34,13 @@ void myfunc(double *s, double *mat, int *v, int length)
 	for (int j = 0; j < length; j += 5)
 	{
 		int jlen = j * length;
-		int jlen1 = (j+1) * length;
-		int jlen2 = (j+2) * length;
-		int jlen3 = (j+3) * length;
-		int jlen4 = (j+4) * length;
 		for (int i = 0; i < length; i ++)
 		{
 			mat[i + jlen] = s[i + jlen]*(getSquaredVal(val[i]));
-			mat[i + jlen1] = s[i + jlen1]*(getSquaredVal(val[i]));
-			mat[i + jlen2] = s[i + jlen2]*(getSquaredVal(val[i]));
-			mat[i + jlen3] = s[i + jlen3]*(getSquaredVal(val[i]));
-			mat[i + jlen4] = s[i + jlen4]*(getSquaredVal(val[i]));
+			mat[i + jlen*2] = s[i + jlen*2]*(getSquaredVal(val[i]));
+			mat[i + jlen*3] = s[i + jlen*3]*(getSquaredVal(val[i]));
+			mat[i + jlen*4] = s[i + jlen*4]*(getSquaredVal(val[i]));
+			mat[i + jlen*5] = s[i + jlen*5]*(getSquaredVal(val[i]));
 		}
 	}
 }
