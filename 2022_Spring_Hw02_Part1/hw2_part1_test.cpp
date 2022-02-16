@@ -37,7 +37,7 @@ void compareOutputs(double *output1, double *output2, int length)
 	for (int i = 0; i < length; i++)
 		for (int j = 0; j < length; j++)
 		{
-			if (output1[i * length + j] != output2[i * length + j])
+			if (floor((output1[i * length + j]*100000)/100000) != floor((output2[i * length + j]*100000)/100000))
 			{
 				printf("Outputs do not match! (%f, %f)\n", 
 					output1[i * length + j], output2[i * length + j]);
