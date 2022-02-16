@@ -16,7 +16,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 		int jlen = j * length;
 		for (int i = 0; i < length; i++)
 		{
-			printf("v: %f", v[i]);
+			printf("v: %f\n", v[i]);
 			val = round(fmod(v[i],256));
 			//double sinval = sin(val)*sin(val);
 			//double squaredval = sin(val)*sin(val) - (1.0 - sin(val)*sin(val));
