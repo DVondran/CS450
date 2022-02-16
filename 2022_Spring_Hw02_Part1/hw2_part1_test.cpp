@@ -32,6 +32,7 @@ void myfunc_orig(double *s, double *mat, int *v, int length)
 	}
 }
 
+//Edited to account for floating point aritmatic error to 5 decimals
 void compareOutputs(double *output1, double *output2, int length)
 {
 	for (int i = 0; i < length; i++)
