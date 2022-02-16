@@ -15,6 +15,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 		for (int i = 0; i < length; i++)
 		{
 			val = round(fmod(v[i],256)); 
+			printf("val: %f/n", val);
 			mat[i + jlen] = s[i + jlen]*(sin(val)*sin(val)-cos(val)*cos(val));
 		}
 	}
