@@ -18,7 +18,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 		{
 			val = round(fmod(v[i],256)); 
 			double sinval = sin(val)*sin(val);
-			double squaredval = sinval - (1 - sinval);
+			double squaredval = sinval - (1.0 - sinval);
 			mat[i + jlen] = s[i + jlen]*(squaredval);
 		}
 	}
