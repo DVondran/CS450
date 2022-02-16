@@ -16,6 +16,16 @@ void myfunc(double *s, double *mat, int *v, int length)
 	// this assumes that the two dimensional vector is square 
 
 	double val;
+	double val1;
+	double val2;
+	double val3;
+	double val4;
+	double val5;
+	double val6;
+	double val7;
+	double val8;
+	double val9;
+	double val10;
 	
 	for (int j = 0; j < length; j ++)
 	{
