@@ -16,11 +16,10 @@ void myfunc(double *s, double *mat, int *v, int length)
 		int jlen = j * length;
 		for (int i = 0; i < length; i++)
 		{
-			printf("v: %i\n", v[i]);
 			val = round(fmod(v[i],256));
-			//double sinval = sin(val)*sin(val);
-			//double squaredval = sin(val)*sin(val) - (1.0 - sin(val)*sin(val));
-			mat[i + jlen] = s[i + jlen]*(sin(val)*sin(val) - (cos(val)*cos(val)));
+			double sinval = sin(val)*sin(val);
+			double squaredval = sinval*sinval - (double(1.0 - sin(val)*sin(val)));
+			mat[i + jlen] = s[i + jlen]*(squaredval);
 		}
 	}
 }
