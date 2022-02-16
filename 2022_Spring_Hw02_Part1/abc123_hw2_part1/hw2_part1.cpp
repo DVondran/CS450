@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <stdio.h>
+
 //Testing Working
 
 // complex algorithm for evaluation
