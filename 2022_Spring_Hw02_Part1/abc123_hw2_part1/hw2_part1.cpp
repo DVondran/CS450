@@ -4,6 +4,12 @@
 
 //Testing Working
 
+double getSquaredVal(double val)
+{
+	double sinval = sin(val)*sin(val);
+	return (sinval - (1 - (sinval)));
+}
+
 // complex algorithm for evaluation
 void myfunc(double *s, double *mat, int *v, int length)
 {
@@ -22,9 +28,5 @@ void myfunc(double *s, double *mat, int *v, int length)
 	}
 }
 
-double getSquaredVal(double val)
-{
-	double sinval = sin(val)*sin(val);
-	return (sinval - (1 - (sinval)));
-}
+
 
