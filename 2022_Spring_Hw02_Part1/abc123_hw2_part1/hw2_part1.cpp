@@ -24,7 +24,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 	// this assumes that the two dimensional vector is square 
 
 	//double val;
-	double val*;
+	double *val;
 	
 	for (int i = 0; i < length; i ++)
 	{
