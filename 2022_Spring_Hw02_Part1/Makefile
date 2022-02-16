@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -O3 
+CFLAGS= -O3 -mavx -std=c++11 
 DEPS =
 OBJ = hw2_part1_test.o 
 EXEC = hw2_part1_test
