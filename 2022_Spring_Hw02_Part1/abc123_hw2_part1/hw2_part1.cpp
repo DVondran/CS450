@@ -41,7 +41,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 		int jlen2 = (j+2) * length;
 		int jlen3 = (j+3) * length;
 		int jlen4 = (j+4) * length;
-		for (int i = 0; i < length; i +=5)
+		for (int i = 0; i < length; i++)
 		{
 			mat[i + jlen] = s[i + jlen]*(squaredvals[i]);
 			mat[i + jlen1] = s[i + jlen1]*(squaredvals[i]);
