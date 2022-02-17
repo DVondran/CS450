@@ -37,10 +37,10 @@ void myfunc(double *s, double *mat, int *v, int length)
 		for (int i = 0; i < length; i ++)
 		{
 			mat[i + jlen] = s[i + jlen]*(getSquaredVal(val[i]));
-			mat[i + jlen + 5] = s[i + jlen + 5]*(getSquaredVal(val[i]));
-			mat[i + jlen + 10] = s[i + jlen + 10]*(getSquaredVal(val[i]));
-			mat[i + jlen + 15] = s[i + jlen + 15]*(getSquaredVal(val[i]));
-			mat[i + jlen + 20] = s[i + jlen + 20]*(getSquaredVal(val[i]));
+			mat[i + jlen + 2*length] = s[i + jlen + 2*length]*(getSquaredVal(val[i]));
+			mat[i + jlen + 3*length] = s[i + jlen + 3*length]*(getSquaredVal(val[i]));
+			mat[i + jlen + 4*length] = s[i + jlen + 4*length]*(getSquaredVal(val[i]));
+			mat[i + jlen + 5*length] = s[i + jlen + 5*length]*(getSquaredVal(val[i]));
 		}
 	}
 }
