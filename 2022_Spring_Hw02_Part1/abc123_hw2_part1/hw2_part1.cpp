@@ -26,10 +26,12 @@ void myfunc(double *s, double *mat, int *v, int length)
 
 	//double val;
 	double *val = new double[length];
+	double *squaredvals = new double[length];
 	
 	for (int i = 0; i < length; i++)
 	{
 		val[i] = round(fmod(v[i],256));
+		squaredvals[i] = getSquaredVal(val[i]);
 	}
 	
 	for (int j = 0; j < length; j ++)
@@ -37,7 +39,7 @@ void myfunc(double *s, double *mat, int *v, int length)
 		int jlen = j * length;
 		for (int i = 0; i < length; i ++)
 		{
-			mat[i + jlen] = s[i + jlen]*(getSquaredVal(val[i]));
+			mat[i + jlen] = s[i + jlen]*(squaredvals[i]);
 		}
 	}
 }
