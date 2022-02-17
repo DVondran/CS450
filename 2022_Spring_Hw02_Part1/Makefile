@@ -3,7 +3,7 @@ CFLAGS= -O3 -mavx -std=c++11
 DEPS =
 OBJ = hw2_part1_test.o 
 EXEC = hw2_part1_test
-LIB = _hw2_part1
+LIB = _hw2_drv5114_part1
 LIB_DIR = abc123_hw2_part1
 
 %.o: %.cpp $(DEPS)
