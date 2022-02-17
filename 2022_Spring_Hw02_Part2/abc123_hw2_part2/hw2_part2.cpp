@@ -36,4 +36,4 @@ void matrix_mult(double *A, double *B, double *C, int N)
 				}
 		}
 	}
-
+}
