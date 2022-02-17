@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <hw2_part2.hpp>
+#include <hw2_drv5114_part2.hpp>
 
 void get_walltime(double* wcTime) {
 

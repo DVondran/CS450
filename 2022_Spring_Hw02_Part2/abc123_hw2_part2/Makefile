@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS= -I.
-DEPS=hw2_part2.hpp
+DEPS=hw2_drv5114_part2.hpp
 LIB=lib_%.a
 
 cpp_files=$(wildcard *.cpp)
