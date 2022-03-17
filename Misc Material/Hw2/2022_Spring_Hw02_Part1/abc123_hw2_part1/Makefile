@@ -1,0 +1,19 @@
+CC=g++
+CFLAGS= -I.
+DEPS=hw2_drv5114_part1.hpp
+LIB=lib_%.a
+
+cpp_files=$(wildcard *.cpp)
+a_files=$(patsubst %.cpp,$(LIB),$(cpp_files))
+
+%.o: %.cpp $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS);
+
+$(LIB): %.o
+	ar rcs $@ $<
+
+all: $(a_files)
+
+.PHONY: clean
+clean:
+	rm -f $(wildcard *.o) $(wildcard *.a)
