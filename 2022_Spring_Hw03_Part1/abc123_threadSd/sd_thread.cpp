@@ -26,6 +26,15 @@ void meanfunc(struct MYPARAM *p_params, double *A){
 	p_params->d_result = tmpmean;
 }
 
+void sdfunc(struct MYPARAM *p_params, double *A, double mean){
+	double tmpsd = 0;
+	for(long i = p_params->i_start; i < p_params->i_stop; i++)
+	{
+		tmpsd += (A[i] - mean) * (A[i] - mean);
+	}	
+	p_params->d_result = tmpsd;
+}
+
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 {
     struct STDDEV_RESULT* res = new STDDEV_RESULT;
@@ -62,7 +71,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		mean += p_params[i].d_result;
 	mean /= (double) N;
 
-	delete[] p_params;
 	
 	// perform the summation for the mean
 	
@@ -74,13 +82,31 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	*/
 	
 	
-
 	// perform the summation for the std_dev
+	
+	/*
 	for(long i = 0; i < N; i++)
 	{
 		sd_temp += (A[i] - mean) * (A[i] - mean);
-	}	
-	sd=sqrt(sd_temp/(double)N);
+	}
+	
+	*/
+	
+	for (int i = 0; i < P; i++)
+	{
+		t[i] = std::thread(sdfunc, &p_params[i], A, mean);
+	}
+	
+	for (int i = 0; i < P; i++)
+		t[i].join();
+
+	// collect the results
+	for (int i = 0; i < P; i++)
+		sd += p_params[i].d_result;
+	
+	sd=sqrt(sd/(double)N);
+	
+	delete[] p_params;
 	
 	// find min and max
 	for(long i = 0; i < N; i++)
