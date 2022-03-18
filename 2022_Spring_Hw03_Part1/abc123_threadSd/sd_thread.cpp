@@ -119,7 +119,8 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	
 	for (int i = 0; i < P; i++)
 		t[i].join();
-
+	
+	//creating temporary dumps for the secondary set of mins and maxes to be further compared
 	double *tmpmins = new double[P];
 	double *tmpmaxs = new double[P];
 	
@@ -127,7 +128,8 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		tmpmins[i] = p_params->d_min[i];
 		tmpmaxs[i] = p_params->d_max[i];
 	}
-
+	
+	//Comparing the secondary mins and maxes to git global min and max
 	for (int i = 0; i < P; i++){	
 		if (tmpmins[i] < min){
 			min = tmpmins[i];
@@ -136,23 +138,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 			max = tmpmaxs[i];
 		}
 	}
-	
-	
-	// find min and max
-	
-	/*
-	for(long i = 0; i < N; i++)
-	{
-		if(max < A[i])
-		{
-			max = A[i];
-		}
-		if(min > A[i])
-		{
-			min = A[i];
-		}
-	}
-	*/
 	
 	delete[] p_params;
 	
