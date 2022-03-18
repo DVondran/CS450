@@ -115,7 +115,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	//Threading for Min and Max
 	for (int i = 0; i < P; i++)
 	{
-		t[i] = std::thread(minmaxfuncfunc, &p_params[i], A, i);
+		t[i] = std::thread(minmaxfunc, &p_params[i], A, i);
 	}
 	
 	for (int i = 0; i < P; i++)
