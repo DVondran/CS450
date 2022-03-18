@@ -9,6 +9,13 @@
 
 using namespace std;
 
+struct MYPARAM{
+	int i_start;
+	int i_stop;
+	//double d_step;
+	double d_result;
+	};
+
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 {
     struct STDDEV_RESULT* res = new STDDEV_RESULT;
@@ -20,7 +27,23 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
     sd = 0;
     sd_temp = 0;
     mean = 0;
-
+	
+	std::thread t[P];
+	struct MYPARAM *p_params = new struct MYPARAM[P];
+	
+	for (int i = 0; i < P; i++)
+	{
+		p_params[i].i_start = i * (N/P);
+		p_params[i].i_stop = (i + 1) * (N/P);
+		//p_params[i].d_step = 1.0 / (double) NUMSTEPS;
+		p_params[i].d_result = 0.0;	
+	}
+	
+	for (int i = 0; i < P; i++)
+	{
+		t[i] = std::thread(meanfunc, &p_params[i]);
+	}
+	
 	// perform the summation for the mean
 	
 	/*
@@ -29,15 +52,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		mean = mean+A[i];
 	}
 	*/
-	double meanone, meantwo;
-	meanone = 0;
-	meantwo = 0;
 	
-	double breakpt = floor(N/2);
-	meanone = std::thread one(meanfunc, 0, breakpt, A);
-	meantwo = std::thread two(meanfunc, breakpt + 1, N, A);
-
-	mean = meanone + meantwo;
 	mean /= (double) N;
 
 	// perform the summation for the std_dev
@@ -69,15 +84,13 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
     return res;
 }
 
-double meanfunc(long input, long br, double *A){
-	double tmpmean;
-	tempmean = 0;
-	for(long i = input; i < br; i++)
+double meanfunc(struct MYPARAM *p_params, double *A){
+	double tmpmean = 0;
+	for(long i = p_params->i_start; i < p_params->i_stop; i++)
 	{
-		tempmean = tempmean+A[i];
+		tmpmean = tmpmean+A[i];
 	}
-	
-	return tempmean;
+	return tmpmean;
 }
 
 THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
