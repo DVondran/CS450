@@ -140,35 +140,28 @@ struct MYPARAMTHRESH{
 	int i_stop;
 	//double d_step;
 	double d_result;
-	bool *d_condit;
 	};
 
 void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T){
 	long c = 0;
 	for (long i = p_params->i_start; i < p_params->i_stop; i++)
 	{
-		if (A[i] > T){
-			p_params->d_condit[i] = true;
+		if (A[i] > T)
 			c++;
-		}
-		else
-			p_params->d_condit[i] = false;
 	}
 	p_params->d_result = c;
 }
 
-/*
-void indexlocations(struct MYPARAMTHRESH *p_params){
+void indexlocations(struct MYPARAMTHRESH *p_params, double *A, double T){
 	long c = 0;
 	for (long i = p_params->i_start; i < p_params->i_stop; i++){
-		if (p_params->d_condit[i] == true){
+		if (A[i] > T){
 			p_tmpResult->pli_list[c] = i;
 			c++;
 		}
 	}
 	p_params->d_result = c;
 }
-*/
 
 THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 {
