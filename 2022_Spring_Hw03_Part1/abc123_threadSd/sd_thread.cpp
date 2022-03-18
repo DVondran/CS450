@@ -140,7 +140,6 @@ struct MYPARAMTHRESH{
 	int i_stop;
 	//double d_step;
 	long d_result;
-	long c_val;
 	};
 
 void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T){
@@ -155,7 +154,7 @@ void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T){
 
 
 void indexlocations(struct MYPARAMTHRESH *p_params, double *A, double T, THRESH_RESULT *p_tmpResult, int index){
-	long c = p_params->c_val;
+	long c = 0;
 	for (long i = p_params->i_start; i < p_params->i_stop; i++){
 		if (A[i] > T){
 			p_tmpResult->pli_list[c] = i;
