@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <thread>
 #include <chrono>
+#include <algorithm>
 
 #include "sd_thread.h"
 
@@ -15,6 +16,8 @@ struct MYPARAM{
 	int i_stop;
 	//double d_step;
 	double d_result;
+	double *d_min;
+	double *d_max;
 	};
 	
 void meanfunc(struct MYPARAM *p_params, double *A){
@@ -35,6 +38,25 @@ void sdfunc(struct MYPARAM *p_params, double *A, double mean){
 	p_params->d_result = tmpsd;
 }
 
+void minmaxfunc(struct MYPARAM *p_params, double *A, int index){
+	double min = RAND_MAX;
+	double max = 0;
+	for(long i = p_params->i_start; i < p_params->i_stop; i++)
+	{
+		if(max < A[i])
+		{
+			max = A[i];
+		}
+		if(min > A[i])
+		{
+			min = A[i];
+		}
+	}
+	p_params->d_min[index] = min;
+	p_params->d_max[index] = max;
+	
+}
+
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 {
     struct STDDEV_RESULT* res = new STDDEV_RESULT;
@@ -50,14 +72,18 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	std::thread t[P];
 	struct MYPARAM *p_params = new struct MYPARAM[P];
 	
+	//Setting up threads
 	for (int i = 0; i < P; i++)
 	{
 		p_params[i].i_start = i * (N/P);
 		p_params[i].i_stop = (i + 1) * (N/P);
 		//p_params[i].d_step = 1.0 / (double) NUMSTEPS;
-		p_params[i].d_result = 0.0;	
+		p_params[i].d_result = 0.0;
+		p_params[i].d_min = new double[P];
+		p_params[i].d_max = new double[P];
 	}
 	
+	//Threading for Mean Calculation
 	for (int i = 0; i < P; i++)
 	{
 		t[i] = std::thread(meanfunc, &p_params[i], A);
@@ -66,32 +92,12 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	for (int i = 0; i < P; i++)
 		t[i].join();
 
-	// collect the results
+
 	for (int i = 0; i < P; i++)
 		mean += p_params[i].d_result;
 	mean /= (double) N;
-
 	
-	// perform the summation for the mean
-	
-	/*
-	for(long i = 0; i < N; i++)
-	{
-		mean = mean+A[i];
-	}
-	*/
-	
-	
-	// perform the summation for the std_dev
-	
-	/*
-	for(long i = 0; i < N; i++)
-	{
-		sd_temp += (A[i] - mean) * (A[i] - mean);
-	}
-	
-	*/
-	
+	//Threading for sd Calculation
 	for (int i = 0; i < P; i++)
 	{
 		t[i] = std::thread(sdfunc, &p_params[i], A, mean);
@@ -100,15 +106,38 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	for (int i = 0; i < P; i++)
 		t[i].join();
 
-	// collect the results
+
 	for (int i = 0; i < P; i++)
 		sd += p_params[i].d_result;
 	
 	sd=sqrt(sd/(double)N);
 	
-	delete[] p_params;
+	//Threading for Min and Max
+	for (int i = 0; i < P; i++)
+	{
+		t[i] = std::thread(minmaxfuncfunc, &p_params[i], A, i);
+	}
+	
+	for (int i = 0; i < P; i++)
+		t[i].join();
+
+	double *tmpmins = new double[P];
+	double *tmpmaxs = new double[P];
+	
+	for (int i = 0; i < P; i++){
+		tmpmins[i] = p_params->d_min[index];
+		tmpmaxs[i] = p_params->d_max[index];
+	}
+
+	for (int i = 0; i < P; i++)
+		//sd += p_params[i].d_result;
+		min = std::min_element(tmpmins);
+		max = std::max_element(tmpmaxs);
+	
 	
 	// find min and max
+	
+	/*
 	for(long i = 0; i < N; i++)
 	{
 		if(max < A[i])
@@ -120,6 +149,9 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 			min = A[i];
 		}
 	}
+	*/
+	
+	delete[] p_params;
 	
 	// store off the values to return 
 	res->mean = mean;
