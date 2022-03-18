@@ -51,7 +51,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	
 	for (int i = 0; i < P; i++)
 	{
-		t[i] = std::thread(meanfunc, &p_params[i]);
+		t[i] = std::thread(meanfunc, &p_params[i], A);
 	}
 	
 	for (int i = 0; i < P; i++)
