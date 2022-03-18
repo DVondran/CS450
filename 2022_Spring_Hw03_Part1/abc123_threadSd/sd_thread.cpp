@@ -151,7 +151,8 @@ void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T, int ind
 			c++;
 	}
 	p_params->d_result = c;
-	p_params->c_vals[index] = c;
+	if (index < 0)
+		p_params->c_vals[index] = p_params->c_vals[index - 1] + c;
 }
 
 
@@ -185,6 +186,9 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	}
 	
 	//Threading for Thresh Calculation
+	
+	p_params->c_vals[0] = 0;
+	
 	for (int i = 0; i < P; i++)
 	{
 		t_thread[i] = std::thread(traversethresh, &p_params[i], A, T, i);
@@ -193,15 +197,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	for (int i = 0; i < P; i++)
 		t_thread[i].join();
 	
-	p_params->c_vals[0] = 0;
-	int tempc_vals[P];
-	for (int i = 1; i < P; i ++){
-		int val = 0;
-		for (int j = 0; j < i + 1; j++){
-			val = val + p_params->c_vals[j];
-		}
-		tempc_vals[i] = val;
-	}
 	
 	for (int i = 0; i < P; i++){
 		cout << p_params->c_vals[i];
