@@ -15,6 +15,15 @@ struct MYPARAM{
 	//double d_step;
 	double d_result;
 	};
+	
+double meanfunc(struct MYPARAM *p_params, double *A){
+	double tmpmean = 0;
+	for(long i = p_params->i_start; i < p_params->i_stop; i++)
+	{
+		tmpmean = tmpmean+A[i];
+	}
+	return tmpmean;
+}
 
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 {
@@ -82,15 +91,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	res->stddev = sd;
 	
     return res;
-}
-
-double meanfunc(struct MYPARAM *p_params, double *A){
-	double tmpmean = 0;
-	for(long i = p_params->i_start; i < p_params->i_stop; i++)
-	{
-		tmpmean = tmpmean+A[i];
-	}
-	return tmpmean;
 }
 
 THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
