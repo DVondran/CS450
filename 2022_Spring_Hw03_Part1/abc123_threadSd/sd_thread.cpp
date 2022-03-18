@@ -127,9 +127,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		tmpmins[i] = p_params->d_min[i];
 		tmpmaxs[i] = p_params->d_max[i];
 	}
-	
-	double tmpmin = RAND_MAX;
-	double tmpmax = 0;
 
 	for (int i = 0; i < P; i++){	
 		if (tmpmins[i] < min){
