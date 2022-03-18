@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <thread>
 #include <chrono>
-#include <algorithm>
 
 #include "sd_thread.h"
 
@@ -128,11 +127,17 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		tmpmins[i] = p_params->d_min[i];
 		tmpmaxs[i] = p_params->d_max[i];
 	}
+	
+	double tmpmin = RAND_MAX;
+	double tmpmax = 0;
 
-	for (int i = 0; i < P; i++)
-		//sd += p_params[i].d_result;
-		min = std::min_element(tmpmins);
-		max = std::max_element(tmpmaxs);
+	for (int i = 0; i < P; i++)		
+		if (tmpmins[i] < min){
+			min = tmpmins[i];
+		}
+		if (tmpmaxs[i] > max){
+			max = tmpmaxs[i]
+		}
 	
 	
 	// find min and max
