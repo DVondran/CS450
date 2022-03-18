@@ -50,25 +50,6 @@ void sdfunc(struct MYPARAM *p_params, double *A, double mean){
 	p_params->d_result = tmpsd;
 }
 
-void minmaxfunc(struct MYPARAM *p_params, double *A, int index){
-	double min = RAND_MAX;
-	double max = 0;
-	for(long i = p_params->i_start; i < p_params->i_stop; i++)
-	{
-		if(max < A[i])
-		{
-			max = A[i];
-		}
-		if(min > A[i])
-		{
-			min = A[i];
-		}
-	}
-	p_params->d_min[index] = min;
-	p_params->d_max[index] = max;
-	
-}
-
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 {
     struct STDDEV_RESULT* res = new STDDEV_RESULT;
@@ -95,7 +76,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		p_params[i].d_max = new double[P];
 	}
 	
-	//Threading for Mean Calculation
+	//Threading for Mean Calculation, also finds min and max values
 	for (int i = 0; i < P; i++)
 	{
 		t[i] = std::thread(meanfunc, &p_params[i], A, i);
@@ -123,18 +104,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		sd += p_params[i].d_result;
 	
 	sd=sqrt(sd/(double)N);
-	
-	//Threading for Min and Max
-	/*
-	for (int i = 0; i < P; i++)
-	{
-		t[i] = std::thread(minmaxfunc, &p_params[i], A, i);
-	}
-	
-	for (int i = 0; i < P; i++)
-		t[i].join();
-	
-	*/
 	
 	//creating temporary dumps for the secondary set of mins and maxes to be further compared
 	double *tmpmins = new double[P];
