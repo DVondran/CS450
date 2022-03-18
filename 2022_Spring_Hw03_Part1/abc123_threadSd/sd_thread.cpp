@@ -196,7 +196,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	
 	for (int i = 0; i < P; i++){
-		cout << p_params->c_val;
+		cout << p_params[i]->c_val;
 	}
 	
 
