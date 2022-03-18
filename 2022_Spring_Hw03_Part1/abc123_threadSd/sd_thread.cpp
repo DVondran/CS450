@@ -217,10 +217,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	for (int i = 0; i < P; i++)
 		t_thread[i].join();
-
-	long c = 0;
-	for (int i = 0; i < P; i++)
-		c += p_params[i].d_result;
 	
 	delete[] p_params;
 	
