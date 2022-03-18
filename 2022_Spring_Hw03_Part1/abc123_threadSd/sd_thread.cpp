@@ -125,8 +125,8 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	double *tmpmaxs = new double[P];
 	
 	for (int i = 0; i < P; i++){
-		tmpmins[i] = p_params->d_min[index];
-		tmpmaxs[i] = p_params->d_max[index];
+		tmpmins[i] = p_params->d_min[i];
+		tmpmaxs[i] = p_params->d_max[i];
 	}
 
 	for (int i = 0; i < P; i++)
