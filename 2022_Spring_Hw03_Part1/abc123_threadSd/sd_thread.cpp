@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
+
 #include "sd_thread.h"
 
 using namespace std;
@@ -27,6 +29,9 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		mean = mean+A[i];
 	}
 	*/
+	double meanone, meantwo;
+	meanone = 0;
+	meantwo = 0;
 	
 	double breakpt = floor(N/2);
 	meanone = std::thread one(meanfunc, 0, breakpt, A);
@@ -69,7 +74,7 @@ double meanfunc(long input, long br, double *A){
 	tempmean = 0;
 	for(long i = input; i < br; i++)
 	{
-		tempmean = mean+A[i];
+		tempmean = tempmean+A[i];
 	}
 	
 	return tempmean;
