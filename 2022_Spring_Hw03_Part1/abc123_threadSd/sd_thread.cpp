@@ -177,7 +177,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 		p_params[i].i_stop = (i + 1) * (N/P);
 		//p_params[i].d_step = 1.0 / (double) NUMSTEPS;
 		p_params[i].d_result = 0.0;
-		p_params[i].d_condit = new bool[N/P];
 	}
 	
 	//Threading for Thresh Calculation
