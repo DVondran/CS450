@@ -20,11 +20,19 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
     mean = 0;
 
 	// perform the summation for the mean
+	
+	/*
 	for(long i = 0; i < N; i++)
 	{
 		mean = mean+A[i];
 	}
+	*/
+	
+	double breakpt = floor(N/2);
+	meanone = std::thread one(meanfunc, 0, breakpt, A);
+	meantwo = std::thread two(meanfunc, breakpt + 1, N, A);
 
+	mean = meanone + meantwo;
 	mean /= (double) N;
 
 	// perform the summation for the std_dev
@@ -54,6 +62,17 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	res->stddev = sd;
 	
     return res;
+}
+
+double meanfunc(long input, long br, double *A){
+	double tmpmean;
+	tempmean = 0;
+	for(long i = input; i < br; i++)
+	{
+		tempmean = mean+A[i];
+	}
+	
+	return tempmean;
 }
 
 THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
