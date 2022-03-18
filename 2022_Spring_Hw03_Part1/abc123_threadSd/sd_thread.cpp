@@ -138,6 +138,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		if (tmpmaxs[i] > max){
 			max = tmpmaxs[i];
 		}
+	}
 	
 	
 	// find min and max
