@@ -139,7 +139,7 @@ struct MYPARAMTHRESH{
 	int i_start;
 	int i_stop;
 	//double d_step;
-	double d_result;
+	long d_result;
 	};
 
 void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T){
