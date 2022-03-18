@@ -13,7 +13,6 @@ using namespace std;
 struct MYPARAM{
 	int i_start;
 	int i_stop;
-	//double d_step;
 	double d_result;
 	double *d_min;
 	double *d_max;
@@ -70,7 +69,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	{
 		p_params[i].i_start = i * (N/P);
 		p_params[i].i_stop = (i + 1) * (N/P);
-		//p_params[i].d_step = 1.0 / (double) NUMSTEPS;
 		p_params[i].d_result = 0.0;
 		p_params[i].d_min = new double[P];
 		p_params[i].d_max = new double[P];
@@ -138,7 +136,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 struct MYPARAMTHRESH{
 	int i_start;
 	int i_stop;
-	//double d_step;
 	long d_result;
 	};
 
@@ -177,7 +174,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	{
 		p_params[i].i_start = i * (N/P);
 		p_params[i].i_stop = (i + 1) * (N/P);
-		//p_params[i].d_step = 1.0 / (double) NUMSTEPS;
 		p_params[i].d_result = 0.0;
 	}
 	
