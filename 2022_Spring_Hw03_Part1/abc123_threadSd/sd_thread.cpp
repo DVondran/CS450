@@ -151,8 +151,7 @@ void traversethresh(struct MYPARAMTHRESH *p_params, double *A, double T, int ind
 			c++;
 	}
 	p_params->d_result = c;
-	if (index < 0)
-		p_params->c_vals[index] = p_params->c_vals[index - 1] + c;
+	p_params->c_vals[index] = c;
 }
 
 
