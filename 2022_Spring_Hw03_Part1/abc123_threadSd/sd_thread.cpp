@@ -203,6 +203,10 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 		tempc_vals[i] = val;
 	}
 	
+	for (int i = 0; i < P; i++){
+		cout << p_params->c_vals[i];
+	}
+	
 
 	long c = 0;
 	for (int i = 0; i < P; i++)
