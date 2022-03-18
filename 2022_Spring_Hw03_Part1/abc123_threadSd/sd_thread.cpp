@@ -16,13 +16,13 @@ struct MYPARAM{
 	double d_result;
 	};
 	
-double meanfunc(struct MYPARAM *p_params, double *A){
-	double tmpmean = 0;
+void meanfunc(struct MYPARAM *p_params, double *A){
+	double tmpmean = 0.0;
 	for(long i = p_params->i_start; i < p_params->i_stop; i++)
 	{
 		tmpmean = tmpmean+A[i];
 	}
-	return tmpmean;
+	p_params->d_result = tmpmean;
 }
 
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
@@ -53,6 +53,16 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		t[i] = std::thread(meanfunc, &p_params[i]);
 	}
 	
+	for (int i = 0; i < P; i++)
+		t[i].join();
+
+	// collect the results
+	for (int i = 0; i < P; i++)
+		mean += p_params[i].d_result;
+	mean /= (double) N;
+
+	delete[] p_params;
+	
 	// perform the summation for the mean
 	
 	/*
@@ -62,7 +72,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	}
 	*/
 	
-	mean /= (double) N;
+	
 
 	// perform the summation for the std_dev
 	for(long i = 0; i < N; i++)
