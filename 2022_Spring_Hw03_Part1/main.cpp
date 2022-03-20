@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 			(((floor((res_thread->min)*100000))/100000)==((floor((res_serial->min)*100000))/100000)?"passed":"failed") );
 			
 	printf("Max: %f, %f, Check %s \n", res_thread->max, res_serial->max, 
-			(res_thread->max==res_serial->max?"passed":"failed") );
+			(((floor((res_thread->max)*100000))/100000)==((floor((res_serial->max)*100000))/100000)?"passed":"failed") );
 			
 	printf("Mean: %f, %f, Check %s \n", res_thread->mean, res_serial->mean, 
 			(res_thread->mean==res_serial->mean?"passed":"failed") );
