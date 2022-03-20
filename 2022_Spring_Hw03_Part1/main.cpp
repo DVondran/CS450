@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 	// some simple checks
 	printf("Checking correctness of the Program \n");
 	printf("Min: %f, %f, Check %s \n", res_thread->min, res_serial->min, 
-			(res_thread->min==res_serial->min?"passed":"failed") );
+			(((floor((res_thread->min)*100000))/100000)==((floor((res_serial->min)*100000))/100000)?"passed":"failed") );
 			
 	printf("Max: %f, %f, Check %s \n", res_thread->max, res_serial->max, 
 			(res_thread->max==res_serial->max?"passed":"failed") );
