@@ -190,14 +190,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	for (int i = 0; i < P; i++)
 		t_thread[i].join();
-	
-	for (int i = 0; i < P; i++){
-		cout << p_params[i].cval;
-		cout << " ";
-
-	}
-
-	
 
 	long c = 0;
 	for (int i = 0; i < P; i++)
@@ -208,6 +200,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	p_tmpResult->pli_list = new long[c];
 	c = 0;
 	
+	//Setting up the values of c to work with multiple threads
 	long *cvals;
 	cvals = new long[P];
 	cvals[0] = 0;
@@ -216,12 +209,6 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 		long tmp = p_params[i - 1].cval;
 		tmp = cvals[i - 1] + tmp;
 		cvals[i] = tmp;
-	}
-	
-	for (int i = 0; i < P; i++){
-		cout << cvals[i];
-		cout << " ";
-
 	}
 	
 	//Threading for Thresh Calculation
