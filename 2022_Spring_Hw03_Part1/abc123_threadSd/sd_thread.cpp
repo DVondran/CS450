@@ -210,11 +210,12 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	long *cvals;
 	cvals = new long[P];
+	cvals[0] = 0;
 	
-	for (int i = 0; i < P; i++){
+	for (int i = 1; i < P; i++){
 		long tmp = 0;
 		for (int j = 0; j <= i; j++){
-			tmp = tmp + p_params[i].cval;
+			tmp = tmp + p_params[j].cval;
 		}
 		cvals[i] = tmp;
 	}
