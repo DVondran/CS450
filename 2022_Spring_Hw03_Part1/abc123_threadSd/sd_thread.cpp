@@ -208,6 +208,22 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	p_tmpResult->pli_list = new long[c];
 	c = 0;
 	
+	long *cvals;
+	cvals = new long[P];
+	for (int i = 0; i < P, i++){
+		long tmp = 0;
+		for (int j = 0; j <= i; j++){
+			tmp = tmp + p_params[i].cval;
+		}
+		cvals[i] = tmp;
+	}
+	
+	for (int i = 0; i < P; i++){
+		cout << cvals[i];
+		cout << " ";
+
+	}
+	
 	//Threading for Thresh Calculation
 	for (int i = 0; i < P; i++)
 	{
