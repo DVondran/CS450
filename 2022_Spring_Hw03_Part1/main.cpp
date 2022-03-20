@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 	get_walltime(&wce);
 	thread_duration = wce-wcs;
 	
-	// some simple checks
+	// some simple checks (Modified to check vals within 5 decimal places)
 	printf("Checking correctness of the Program \n");
 	printf("Min: %f, %f, Check %s \n", res_thread->min, res_serial->min, 
 			(((floor((res_thread->min)*100000))/100000)==((floor((res_serial->min)*100000))/100000)?"passed":"failed") );
@@ -80,10 +80,10 @@ int main(int argc, char *argv[])
 			(((floor((res_thread->max)*100000))/100000)==((floor((res_serial->max)*100000))/100000)?"passed":"failed") );
 			
 	printf("Mean: %f, %f, Check %s \n", res_thread->mean, res_serial->mean, 
-			(res_thread->mean==res_serial->mean?"passed":"failed") );
+			(((floor((res_thread->mean)*100000))/100000)==((floor((res_serial->mean)*100000))/100000)?"passed":"failed") );
 			
 	printf("Standard Deviation: %0.9f, %0.9f, Check %s\n", res_thread->stddev, res_serial->stddev, 
-			(res_thread->stddev==res_serial->stddev?"passed":"failed"));
+			(((floor((res_thread->stddev)*100000))/100000)==((floor((res_serial->stddev)*100000))/100000)?"passed":"failed"));
 			
 	printf("STD_DEV Wall times: Threaded: %f, Serial: %f\n", thread_duration, serial_duration);
 			
