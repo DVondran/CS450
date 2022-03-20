@@ -192,7 +192,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 		t_thread[i].join();
 	
 	for (int i = 0; i < P; i++){
-		cout << p_params->cvals[i];
+		cout << p_params[i]->cvals[i];
 		cout << " ";
 
 	}
