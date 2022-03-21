@@ -60,12 +60,6 @@ int main(int argc, char *argv[])
 		{
 			A[i] = 1000.0 * (double)rand() / (double)RAND_MAX;
 		}
-
-		// benchmark serial implementation
-		get_walltime(&wcs);
-		res_serial = calcSdSerial(A, N);
-		get_walltime(&wce);
-		serial_duration = wce-wcs;
 	
 		// benchmark threaded implementation
 		get_walltime(&wcs);
