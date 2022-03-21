@@ -29,15 +29,10 @@ int main(int argc, char *argv[])
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
 	
-	long values[100000];
-	values[0] = 5000;
+	long values {1000, 5000, 10000, 50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000, 10000000000};
 	
-	for (long i = 1; i <= 100000; i++){
-		values[i] = i * 10000;
-	}
-	
-	for (long i = 0; i <= 10000; i++){
-		long N = 1000000000;
+	for (long i = 0; i < 15; i++){
+		long N = values[i];
 		int P = 10;
 		double T = 999.0;
 
