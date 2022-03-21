@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
 	
-	long values = new long[100000];
+	long values[100000];
 	values[0] = 5000;
 	
 	for (long i = 1; i <= 100000; i++){
@@ -76,6 +76,10 @@ int main(int argc, char *argv[])
 		thread_duration = wce-wcs;
 	
 		printf("Threaded: %f, N: %f\n", thread_duration, N);
+		
+		delete[] A;
+		delete res_serial;
+		delete res_thread;
 	}
 	
 	/*
@@ -195,6 +199,7 @@ int main(int argc, char *argv[])
 	
 	*/
 	
+	/*
 	delete[] A;
 	delete res_serial;
 	delete res_thread;
@@ -204,6 +209,8 @@ int main(int argc, char *argv[])
 
 	delete[] p_serialThreshRes->pli_list;
 	delete p_serialThreshRes;
+	
+	*/
 	
 	
 	return 0;
