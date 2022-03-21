@@ -4,6 +4,14 @@
 
 #include <hw2_part2.hpp>
 
+struct ResultParam{
+	int i_start;
+	int i_stop;
+	double d_result;
+	double d_min;
+	double d_max;
+	};
+
 void get_walltime(double* wcTime) {
 
      struct timeval tp;
@@ -49,8 +57,12 @@ void compareOutputs(double *output1, double *output2, int length)
 
 int main(int argc, char *argv[])
 {
-
+	
+	ResultParam* threaded;
+	
 	int N = 2000;
+	int P = 10;
+	
 
 	double d_S, d_E;
 
@@ -59,6 +71,9 @@ int main(int argc, char *argv[])
 	double *B = new double[N * N];
 	double *C = new double[N * N];
 	double *orig_C = new double[N * N];
+	
+	
+	
 	
 
 	// populate memory with some random data

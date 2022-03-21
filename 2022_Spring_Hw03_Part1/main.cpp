@@ -28,6 +28,57 @@ int main(int argc, char *argv[])
 	// a separate results object for each test
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
+	
+	long values = new long[100000];
+	values[0] = 5000;
+	
+	for (long i = 1; i <= 100000; i++){
+		values[i] = i * 10000;
+	}
+	
+	for (long i = 0; i <= 10000; i++){
+		long N = 1000000000;
+		int P = 10;
+		double T = 999.0;
+
+		if (argc >= 2)
+		{ // 1st argument is N
+			N = atoi(argv[1]);
+		}
+		if (argc >= 3)
+		{ // 2nd argument is P
+			P = atoi(argv[2]);
+		}
+		if (argc >= 4)
+		{ // 3rd argument is T
+			T = atof(argv[3]);
+		}
+	
+		srand(time(0));
+	
+		double *A = new double[N];
+	
+		for(long i=0;i<N;i++)
+		{
+			A[i] = 1000.0 * (double)rand() / (double)RAND_MAX;
+		}
+
+		// benchmark serial implementation
+		get_walltime(&wcs);
+		res_serial = calcSdSerial(A, N);
+		get_walltime(&wce);
+		serial_duration = wce-wcs;
+	
+		// benchmark threaded implementation
+		get_walltime(&wcs);
+		res_thread = calcSdThread(A, N, P);
+		get_walltime(&wce);
+		thread_duration = wce-wcs;
+	
+		printf("Threaded: %f, N: %f\n", thread_duration, N);
+	}
+	
+	/*
 
 	long N = 1000000000;
 	int P = 10;
@@ -71,7 +122,12 @@ int main(int argc, char *argv[])
 	get_walltime(&wce);
 	thread_duration = wce-wcs;
 	
+	printf("Threaded: %f, N: %f\n", thread_duration, N);
+	
+	*/
+	
 	// some simple checks (Modified to check vals within 5 decimal places)
+	/*
 	printf("Checking correctness of the Program \n");
 	printf("Min: %f, %f, Check %s \n", res_thread->min, res_serial->min, 
 			(((floor((res_thread->min)*100000))/100000)==((floor((res_serial->min)*100000))/100000)?"passed":"failed") );
@@ -87,7 +143,9 @@ int main(int argc, char *argv[])
 			
 	printf("STD_DEV Wall times: Threaded: %f, Serial: %f\n", thread_duration, serial_duration);
 			
-			
+	*/
+	
+	/*
 	THRESH_RESULT *p_serialThreshRes;
 	THRESH_RESULT *p_threadThreshRes;
 			
@@ -103,7 +161,8 @@ int main(int argc, char *argv[])
 	get_walltime(&wce);
 	thread_duration = wce-wcs;
 			
-	
+	*/
+	/*
 	printf("Checking correctness of Thresholding \n");
 	printf("Threshold Count: %i, %i, Check %s\n", 
 			p_threadThreshRes->li_threshCount, 
@@ -133,7 +192,9 @@ int main(int argc, char *argv[])
 	}
 	
 	printf("THRESH Wall times: OMP: %f, Serial: %f\n", thread_duration, serial_duration);		
-			
+	
+	*/
+	
 	delete[] A;
 	delete res_serial;
 	delete res_thread;
