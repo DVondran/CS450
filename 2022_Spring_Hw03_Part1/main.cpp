@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
 		long N = values[i];
 		int P = 10;
 		double T = 999.0;
-
+		
+		/*
 		if (argc >= 2)
 		{ // 1st argument is N
 			N = atoi(argv[1]);
@@ -48,6 +49,8 @@ int main(int argc, char *argv[])
 		{ // 3rd argument is T
 			T = atof(argv[3]);
 		}
+		
+		*/
 	
 		srand(time(0));
 	
