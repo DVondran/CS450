@@ -14,8 +14,8 @@ struct MYPARAM{
 	int i_start;
 	int i_stop;
 	double d_result;
-	double *d_min;
-	double *d_max;
+	double d_min;
+	double d_max;
 	};
 	
 void meanfunc(struct MYPARAM *p_params, double *A, int index){
@@ -36,8 +36,8 @@ void meanfunc(struct MYPARAM *p_params, double *A, int index){
 		}
 	}
 	p_params->d_result = tmpmean;
-	p_params->d_min[index] = min;
-	p_params->d_max[index] = max;
+	p_params->d_min = min;
+	p_params->d_max = max;
 }
 
 void sdfunc(struct MYPARAM *p_params, double *A, double mean){
@@ -70,8 +70,8 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 		p_params[i].i_start = i * (N/P);
 		p_params[i].i_stop = (i + 1) * (N/P);
 		p_params[i].d_result = 0.0;
-		p_params[i].d_min = new double[P];
-		p_params[i].d_max = new double[P];
+		p_params[i].d_min = 0.0;
+		p_params[i].d_max = 0.0;
 	}
 	
 	//Threading for Mean Calculation, also finds min and max values
@@ -108,11 +108,11 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	double *tmpmaxs = new double[P];
 	
 	for (int i = 0; i < P; i++){
-		tmpmins[i] = p_params->d_min[i];
-		tmpmaxs[i] = p_params->d_max[i];
+		tmpmins[i] = p_params[i].d_min;
+		tmpmaxs[i] = p_params[i].d_max;
 	}
 	
-	//Comparing the secondary mins and maxes to git global min and max
+	//Comparing the secondary mins and maxes to get global min and max
 	for (int i = 0; i < P; i++){	
 		if (tmpmins[i] < min){
 			min = tmpmins[i];

@@ -1,0 +1,120 @@
+#include <iostream>
+#include <sys/time.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <thread>
+#include <chrono>
+
+
+struct MYPARAM{
+	int i_start;
+	int i_stop;
+	double d_result;
+	double *d_min;
+	double *d_max;
+	};
+	
+STDDEV_RESULT* calcSdThread(double *A, long N, int P)
+{
+    struct STDDEV_RESULT* res = new STDDEV_RESULT;
+    
+    double sd_temp, mean, min, max, sd;
+    
+    min = RAND_MAX;
+    max = 0.0;
+    sd = 0;
+    sd_temp = 0;
+    mean = 0;
+	
+	std::thread t[P];
+	struct MYPARAM *p_params = new struct MYPARAM[P];
+	
+	//Setting up threads
+	for (int i = 0; i < P; i++)
+	{
+		p_params[i].i_start = i * (N/P);
+		p_params[i].i_stop = (i + 1) * (N/P);
+		p_params[i].d_result = 0.0;
+		p_params[i].d_min = new double[P];
+		p_params[i].d_max = new double[P];
+	}
+	
+	//Threading for Mean Calculation, also finds min and max values
+	for (int i = 0; i < P; i++)
+	{
+		t[i] = std::thread(meanfunc, &p_params[i], A, i);
+	}
+	
+	for (int i = 0; i < P; i++)
+		t[i].join();
+
+
+	for (int i = 0; i < P; i++)
+		mean += p_params[i].d_result;
+	mean /= (double) N;
+	
+	//Threading for sd Calculation
+	for (int i = 0; i < P; i++)
+	{
+		t[i] = std::thread(sdfunc, &p_params[i], A, mean);
+	}
+	
+	for (int i = 0; i < P; i++)
+		t[i].join();
+
+
+	for (int i = 0; i < P; i++)
+		sd += p_params[i].d_result;
+	
+	sd=sqrt(sd/(double)N);
+	
+	//creating temporary dumps for the secondary set of mins and maxes to be further compared
+	double *tmpmins = new double[P];
+	double *tmpmaxs = new double[P];
+	
+	for (int i = 0; i < P; i++){
+		tmpmins[i] = p_params->d_min[i];
+		tmpmaxs[i] = p_params->d_max[i];
+	}
+	
+	//Comparing the secondary mins and maxes to git global min and max
+	for (int i = 0; i < P; i++){	
+		if (tmpmins[i] < min){
+			min = tmpmins[i];
+		}
+		if (tmpmaxs[i] > max){
+			max = tmpmaxs[i];
+		}
+	}
+	
+	delete[] p_params;
+	
+	// store off the values to return 
+	res->mean = mean;
+	res->min = min;
+	res->max = max;
+	res->stddev = sd;
+	
+    return res;
+}
+
+
+
+
+
+
+// complex algorithm for evaluation
+void matrix_mult(double *A, double *B, double *C, int N)
+{
+	for (int i = 0; i < N; i++)
+		for (int j = 0; j < N; j++)
+		{
+			C[i * N + j] = 0;
+				for (int k = 0; k < N; k++)
+				{
+					C[i * N + j] += A[i * N + k] * B[k * N + j];
+				}
+		}
+}
+
