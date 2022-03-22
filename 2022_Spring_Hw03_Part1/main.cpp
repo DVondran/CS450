@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 	
 	for (long i = 0; i < 15; i++){
 		long N = values[i];
+		printf("N: %f\n", N);
 		int P = 10;
 		double T = 999.0;
 		
