@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
 	for (long i = 0; i < 15; i++){
 		long N;
 		N = values[i];
-		printf("N: %f\n", N);
 		int P = 10;
 		double T = 999.0;
 		
@@ -69,7 +68,7 @@ int main(int argc, char *argv[])
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
 	
-		printf("Threaded: %f, N: %f\n", thread_duration, N);
+		printf("Threaded: %lu, N: %lu\n", thread_duration, N);
 		
 		delete[] A;
 		delete res_serial;
