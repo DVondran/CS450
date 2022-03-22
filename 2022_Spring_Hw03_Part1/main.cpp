@@ -46,17 +46,34 @@ int main(int argc, char *argv[])
 			A[i] = 1000.0 * (double)rand() / (double)RAND_MAX;
 		}
 	
-		// benchmark threaded implementation
+		THRESH_RESULT *p_serialThreshRes;
+		THRESH_RESULT *p_threadThreshRes;
+			
+		// benchmark serial threshold implementation
 		get_walltime(&wcs);
-		res_thread = calcSdThread(A, N, P);
+		p_serialThreshRes = findThreshValuesSerial(A, N, T);
+		get_walltime(&wce);
+		serial_duration = wce-wcs;
+	
+		// benchmark threaded threshold implementation
+		get_walltime(&wcs);
+		p_threadThreshRes = findThreshValuesThread(A, N, T, P);
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
-	
-		printf("%f,%lu \n", thread_duration, N);
+		
+		printf("%f, %lu\n", thread_duration, N);
 		
 		delete[] A;
 		delete res_serial;
 		delete res_thread;
+	
+		delete[] p_threadThreshRes->pli_list;
+		delete p_threadThreshRes;
+
+		delete[] p_serialThreshRes->pli_list;
+		delete p_serialThreshRes;
+		
+		
 	}
 	
 	/*
