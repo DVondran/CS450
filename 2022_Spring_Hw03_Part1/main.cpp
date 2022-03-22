@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
 	
-		printf("%f,%lu\ n", thread_duration, N);
+		printf("%f,%lu \n", thread_duration, N);
 		
 		delete[] A;
 		delete res_serial;
