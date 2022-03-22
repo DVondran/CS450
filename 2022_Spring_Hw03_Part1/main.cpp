@@ -29,29 +29,13 @@ int main(int argc, char *argv[])
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
 	
-	long values [15] = {1000, 5000, 10000, 50000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000, 10000000000};
+	long values [8] = {1000, 3000, 5000, 7000, 10000, 30000, 50000, 70000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1000000000, 5000000000};
 	
-	for (long i = 0; i < 15; i++){
+	for (long i = 0; i < 18; i++){
 		long N;
 		N = values[i];
 		int P = 10;
 		double T = 999.0;
-		
-		/*
-		if (argc >= 2)
-		{ // 1st argument is N
-			N = atoi(argv[1]);
-		}
-		if (argc >= 3)
-		{ // 2nd argument is P
-			P = atoi(argv[2]);
-		}
-		if (argc >= 4)
-		{ // 3rd argument is T
-			T = atof(argv[3]);
-		}
-		
-		*/
 	
 		srand(time(0));
 	
@@ -68,7 +52,7 @@ int main(int argc, char *argv[])
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
 	
-		printf("Threaded: %f, N: %lu\n", thread_duration, N);
+		printf("%f,%lu\ n", thread_duration, N);
 		
 		delete[] A;
 		delete res_serial;
