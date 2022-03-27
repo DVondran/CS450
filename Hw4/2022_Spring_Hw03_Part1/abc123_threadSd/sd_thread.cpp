@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "sd_thread.h"
 
 using namespace std;
@@ -20,10 +21,11 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
     mean = 0;
 
 	// perform the summation for the mean
-	for(long i = 0; i < N; i++)
-	{
-		mean = mean+A[i];
-	}
+	#pragma omp parallel for reduction(+:mean)
+		for(long i = 0; i < N; i++)
+		{
+			mean = mean+A[i];
+		}
 
 	mean /= (double) N;
 

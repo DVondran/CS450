@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -O3 -pthread
+CFLAGS= -O3 -pthread -fopenmp
 DEPS =
 OBJ = main.o calcSd.o
 EXEC = sd_test
