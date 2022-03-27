@@ -40,11 +40,16 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 
 	mean /= (double) N;
 
-	// perform the summation for the std_dev
-	for(long i = 0; i < N; i++)
+	#pragma omp parallel num_threads(P)
 	{
-		sd_temp += (A[i] - mean) * (A[i] - mean);
-	}	
+		// perform the summation for the std_dev
+		#pragma omp for reduction(+:sd_temp)
+			for(long i = 0; i < N; i++)
+			{
+				sd_temp += (A[i] - mean) * (A[i] - mean);
+			}	
+	}
+	
 	sd=sqrt(sd_temp/(double)N);
 	
 	/*
