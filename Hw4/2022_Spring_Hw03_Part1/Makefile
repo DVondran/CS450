@@ -1,8 +1,8 @@
 CC=g++
-CFLAGS= -O3 -pthread -mavx -std=c++11
+CFLAGS= -O3 -pthread
 DEPS =
 OBJ = main.o calcSd.o
-EXEC = hw3_part1
+EXEC = sd_test
 LIB = _sd_thread
 LIB_DIR = abc123_threadSd
 

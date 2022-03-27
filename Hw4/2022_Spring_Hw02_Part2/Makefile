@@ -1,10 +1,10 @@
 CC=g++
-CFLAGS= -O3 -pthread -mavx -std=c++11
+CFLAGS= -O3 
 DEPS =
-OBJ = main.o calcSd.o
-EXEC = hw3_part1
-LIB = _sd_thread
-LIB_DIR = abc123_threadSd
+OBJ = hw2_part2_test.o 
+EXEC = hw2_part2_test
+LIB = _hw2_part2
+LIB_DIR = abc123_hw2_part2
 
 %.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) -I. -I./$(LIB_DIR)
