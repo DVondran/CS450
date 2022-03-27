@@ -52,21 +52,6 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	
 	sd=sqrt(sd_temp/(double)N);
 	
-	/*
-	// find min and max
-	for(long i = 0; i < N; i++)
-	{
-		if(max < A[i])
-		{
-			max = A[i];
-		}
-		if(min > A[i])
-		{
-			min = A[i];
-		}
-	}
-	*/
-	
 	// store off the values to return 
 	res->mean = mean;
 	res->min = min;
@@ -82,11 +67,15 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	// traverse the list once to find the count of values over threshold
 	long c = 0;
-	for (long i=0; i < N; i++)
+	#pragma ompparallel for
 	{
-		if (A[i] > T)
-			c++;
+		for (long i=0; i < N; i++)
+		{
+			if (A[i] > T)
+				c++;
+		}
 	}
+
 	
 	// store the count and allocate an array to store the results
 	p_tmpResult->li_threshCount = c;
