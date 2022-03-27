@@ -67,7 +67,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	// traverse the list once to find the count of values over threshold
 	long c = 0;
-	#pragma ompparallel for
+	#pragma omp parallel for
 	{
 		for (long i=0; i < N; i++)
 		{
