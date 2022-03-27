@@ -69,7 +69,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	long c = 0;
 	#pragma omp parallel num_threads(P)
 	{
-		#pragma omp parallel for
+		#pragma omp for
 			for (long i=0; i < N; i++)
 			{
 				if (A[i] > T)
