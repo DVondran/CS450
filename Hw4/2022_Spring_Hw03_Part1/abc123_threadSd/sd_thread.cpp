@@ -23,7 +23,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	#pragma omp parallel num_threads(P)
 	{
 		// perform the summation for the mean
-		#pragma omp for private reduction(+:mean)
+		#pragma omp for reduction(+:mean)
 			for(long i = 0; i < N; i++)
 			{
 				mean = mean+A[i];
