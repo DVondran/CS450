@@ -88,7 +88,7 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	// store the index locations of the values over threshold
 	#pragma omp parallel num_threads(P)
 	{
-		#pragma omp for private(i)
+		#pragma omp for private(i) reduction(+:c)
 		for (long i=0; i < N; i++){
 			if (A[i] > T){
 				p_tmpResult->pli_list[c] = i;
