@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -I.
+CFLAGS= -I. -O3 -fopenmp
 DEPS=hw2_part2.hpp
 LIB=lib_%.a
 

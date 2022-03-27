@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -O3 
+CFLAGS= -O3 -fopenmp
 DEPS =
 OBJ = hw2_part2_test.o 
 EXEC = hw2_part2_test

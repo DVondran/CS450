@@ -1,3 +1,9 @@
+#include <iostream>
+#include <sys/time.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
 
 // complex algorithm for evaluation
 void matrix_mult(double *A, double *B, double *C, int N)
