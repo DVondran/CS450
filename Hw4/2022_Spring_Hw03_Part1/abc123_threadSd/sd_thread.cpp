@@ -20,12 +20,23 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
     sd_temp = 0;
     mean = 0;
 
-	// perform the summation for the mean
-	#pragma omp parallel for reduction(+:mean)
-		for(long i = 0; i < N; i++)
-		{
-			mean = mean+A[i];
-		}
+	#pragma omp parallel num_threads(P)
+	{
+		// perform the summation for the mean
+		#pragma omp for private(i) reduction(+:mean)
+			for(long i = 0; i < N; i++)
+			{
+				mean = mean+A[i];
+				if(max < A[i])
+				{
+					max = A[i];
+				}
+				if(min > A[i])
+				{
+					min = A[i];
+				}
+			}
+	}
 
 	mean /= (double) N;
 
@@ -36,6 +47,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 	}	
 	sd=sqrt(sd_temp/(double)N);
 	
+	/*
 	// find min and max
 	for(long i = 0; i < N; i++)
 	{
@@ -48,6 +60,7 @@ STDDEV_RESULT* calcSdThread(double *A, long N, int P)
 			min = A[i];
 		}
 	}
+	*/
 	
 	// store off the values to return 
 	res->mean = mean;
