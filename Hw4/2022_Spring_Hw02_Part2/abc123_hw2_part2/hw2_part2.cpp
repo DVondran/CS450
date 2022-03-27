@@ -10,6 +10,7 @@ void matrix_mult(double *A, double *B, double *C, int N)
 {
 	#pragma omp parallel num_threads(10)
 	{
+		#pragma omp for
 		for (int i = 0; i < N; i++)
 			for (int j = 0; j < N; j++)
 			{
