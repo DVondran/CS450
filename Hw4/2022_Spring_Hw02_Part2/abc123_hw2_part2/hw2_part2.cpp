@@ -15,7 +15,6 @@ void matrix_mult(double *A, double *B, double *C, int N)
 			for (int j = 0; j < N; j++)
 			{
 				C[i * N + j] = 0;
-					#pragma omp for
 					for (int k = 0; k < N; k++)
 					{
 						C[i * N + j] += A[i * N + k] * B[k * N + j];
