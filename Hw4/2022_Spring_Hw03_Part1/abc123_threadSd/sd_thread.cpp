@@ -67,9 +67,10 @@ THRESH_RESULT *findThreshValuesThread(double *A, long N, double T, int P)
 	
 	// traverse the list once to find the count of values over threshold
 	long c = 0;
+	int i = 0;
 	#pragma omp parallel num_threads(P)
 	{
-		#pragma omp for
+		#pragma omp for private(i) reduction(+:c)
 			for (long i=0; i < N; i++)
 			{
 				if (A[i] > T)
