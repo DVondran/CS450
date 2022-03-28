@@ -28,6 +28,100 @@ int main(int argc, char *argv[])
 	// a separate results object for each test
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
+	long nvals = {10e3, 15e3, 10e4, 15e4, 10e5, 15e5, 10e6, 15e6, 10e7, 15e7, 10e8, 15e8, 10e9, 15e9};
+	
+	for(int i = 0; i < 14; i++){
+		long N = nvals[i];
+		int P = 10;
+		double T = 999.0;
+
+		if (argc >= 2)
+		{ // 1st argument is N
+			N = atoi(argv[1]);
+		}
+		if (argc >= 3)
+		{ // 2nd argument is P
+			P = atoi(argv[2]);
+		}
+		if (argc >= 4)
+		{ // 3rd argument is T
+			T = atof(argv[3]);
+		}
+	
+		printf("N %d\n",N);
+	
+		srand(time(0));
+	
+		double *A = new double[N];
+	
+		for(long i=0;i<N;i++)
+		{
+			A[i] = 1000.0 * (double)rand() / (double)RAND_MAX;
+		}
+
+		// benchmark serial implementation
+		get_walltime(&wcs);
+		res_serial = calcSdSerial(A, N);
+		get_walltime(&wce);
+		serial_duration = wce-wcs;
+	
+		// benchmark threaded implementation
+		get_walltime(&wcs);
+		res_thread = calcSdThread(A, N, P);
+		get_walltime(&wce);
+		thread_duration = wce-wcs;
+	
+		// some simple checks
+			
+		printf("Threaded: %f, N: %ld\n", thread_duration, N);
+			
+			
+		THRESH_RESULT *p_serialThreshRes;
+		THRESH_RESULT *p_threadThreshRes;
+			
+		// benchmark serial threshold implementation
+		get_walltime(&wcs);
+		p_serialThreshRes = findThreshValuesSerial(A, N, T);
+		get_walltime(&wce);
+		serial_duration = wce-wcs;
+	
+		// benchmark threaded threshold implementation
+		get_walltime(&wcs);
+		p_threadThreshRes = findThreshValuesThread(A, N, T, P);
+		get_walltime(&wce);
+		thread_duration = wce-wcs;
+			
+		}
+}
+
+/*
+	for (long ii = 0; ii < p_threadThreshRes->li_threshCount; ii++)
+	{
+		if (A[p_threadThreshRes->pli_list[ii]] < T)
+		{
+			printf("Error! Thread Threshold list is inaccurate! Item %i failed! A[%i] = %f (%f)\n",
+					ii, p_threadThreshRes->pli_list[ii], 
+					A[p_threadThreshRes->pli_list[ii]], T);
+			break;
+		}
+	}
+	
+	printf("THRESH Wall times: OMP: %f, Serial: %f\n", thread_duration, serial_duration);		
+			
+	delete[] A;
+	delete res_serial;
+	delete res_thread;
+	
+	delete[] p_threadThreshRes->pli_list;
+	delete p_threadThreshRes;
+
+	delete[] p_serialThreshRes->pli_list;
+	delete p_serialThreshRes;
+	
+	
+	return 0;
+	}
+	
 
 	long N = 1000000000;
 	int P = 10;
@@ -134,6 +228,7 @@ int main(int argc, char *argv[])
 	
 	printf("THRESH Wall times: OMP: %f, Serial: %f\n", thread_duration, serial_duration);		
 			
+*/
 	delete[] A;
 	delete res_serial;
 	delete res_thread;
@@ -143,6 +238,8 @@ int main(int argc, char *argv[])
 
 	delete[] p_serialThreshRes->pli_list;
 	delete p_serialThreshRes;
+	
+
 	
 	
 	return 0;
