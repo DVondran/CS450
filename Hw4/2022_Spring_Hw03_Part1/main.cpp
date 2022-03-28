@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	// a separate results object for each test
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
-	long nvals = {10e3, 15e3, 10e4, 15e4, 10e5, 15e5, 10e6, 15e6, 10e7, 15e7, 10e8, 15e8, 10e9, 15e9};
+	long nvals[14] = {10e3, 15e3, 10e4, 15e4, 10e5, 15e5, 10e6, 15e6, 10e7, 15e7, 10e8, 15e8, 10e9, 15e9};
 	
 	for(int i = 0; i < 14; i++){
 		long N = nvals[i];
