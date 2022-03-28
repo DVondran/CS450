@@ -92,7 +92,6 @@ int main(int argc, char *argv[])
 		thread_duration = wce-wcs;
 			
 		}
-}
 
 /*
 	for (long ii = 0; ii < p_threadThreshRes->li_threshCount; ii++)
