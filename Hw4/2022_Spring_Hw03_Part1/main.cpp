@@ -90,6 +90,16 @@ int main(int argc, char *argv[])
 		p_threadThreshRes = findThreshValuesThread(A, N, T, P);
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
+		
+		delete[] A;
+		delete res_serial;
+		delete res_thread;
+	
+		delete[] p_threadThreshRes->pli_list;
+		delete p_threadThreshRes;
+
+		delete[] p_serialThreshRes->pli_list;
+		delete p_serialThreshRes;
 			
 		}
 
@@ -227,7 +237,7 @@ int main(int argc, char *argv[])
 	
 	printf("THRESH Wall times: OMP: %f, Serial: %f\n", thread_duration, serial_duration);		
 			
-*/
+
 	delete[] A;
 	delete res_serial;
 	delete res_thread;
@@ -238,8 +248,7 @@ int main(int argc, char *argv[])
 	delete[] p_serialThreshRes->pli_list;
 	delete p_serialThreshRes;
 	
-
-	
+*/
 	
 	return 0;
 }
