@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 	
 		// some simple checks
 			
-		printf("%f, %ld\n", thread_duration, N);
+		printf("%f, %lu\n", thread_duration, N);
 			
 			
 		THRESH_RESULT *p_serialThreshRes;
