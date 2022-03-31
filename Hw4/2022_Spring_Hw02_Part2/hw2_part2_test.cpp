@@ -49,7 +49,52 @@ void compareOutputs(double *output1, double *output2, int length)
 
 int main(int argc, char *argv[])
 {
+	
+	int nvals[10] = {2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000};
+	for(int i = 0; i < 10; i++){
+		int N = nvals[i];
 
+		double d_S, d_E;
+
+		// some declarations
+		double *A = new double[N * N];
+		double *B = new double[N * N];
+		double *C = new double[N * N];
+		double *orig_C = new double[N * N];
+	
+
+		// populate memory with some random data
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				A[i * N + j] = i * i;
+				B[i * N + j] = (double)j / (double) (i + 1);
+			}
+		}
+
+	
+
+		// run the original for functional verification
+		matrix_mult_orig(A, B, orig_C, N);
+
+		// start benchmark
+		get_walltime(&d_S);
+
+		// iterative test loop
+		matrix_mult(A, B, C, N);
+
+		// end benchmark
+		get_walltime(&d_E);
+
+		// check the two matrices
+		compareOutputs(orig_C, C, N);
+		
+		// report results
+		printf("%f, %f\n", d_E - d_S, N);
+	}
+	
+	/*
 	int N = 2000;
 
 	double d_S, d_E;
@@ -90,6 +135,7 @@ int main(int argc, char *argv[])
 		
 	// report results
 	printf("Elapsed time: %f\n", d_E - d_S);
+	*/
 
 	// cleanup!
 	delete[] A;
