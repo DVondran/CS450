@@ -71,8 +71,6 @@ int main(int argc, char *argv[])
 	
 		// some simple checks
 			
-		printf("%f, %lu\n", thread_duration, N);
-			
 			
 		THRESH_RESULT *p_serialThreshRes;
 		THRESH_RESULT *p_threadThreshRes;
@@ -88,6 +86,8 @@ int main(int argc, char *argv[])
 		p_threadThreshRes = findThreshValuesThread(A, N, T, P);
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
+		
+		printf("%f, %f, %lu\n", serial_duration, thread_duration, N);
 		
 		delete[] A;
 		delete res_serial;
