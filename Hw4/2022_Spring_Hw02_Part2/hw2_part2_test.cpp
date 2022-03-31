@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 		compareOutputs(orig_C, C, N);
 		
 		// report results
-		printf("%f, %f\n", d_E - d_S, N);
+		printf("%f, %i\n", d_E - d_S, N);
 		
 		// cleanup!
 		delete[] A;
