@@ -92,6 +92,12 @@ int main(int argc, char *argv[])
 		
 		// report results
 		printf("%f, %f\n", d_E - d_S, N);
+		
+		// cleanup!
+		delete[] A;
+		delete[] B;
+		delete[] C;
+		delete[] orig_C;
 	}
 	
 	/*
@@ -135,13 +141,15 @@ int main(int argc, char *argv[])
 		
 	// report results
 	printf("Elapsed time: %f\n", d_E - d_S);
-	*/
+	
 
 	// cleanup!
 	delete[] A;
 	delete[] B;
 	delete[] C;
 	delete[] orig_C;
+	
+	*/
 
 	return 0;
 }
