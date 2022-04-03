@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS= -O3 -fopenmp
 DEPS =
-OBJ = hw2_part2_test.o 
-EXEC = hw2_part2_test
-LIB = _hw2_part2
+OBJ = hw4_part2_test.o 
+EXEC = hw4_part2_test
+LIB = _hw4_part2
 LIB_DIR = abc123_hw2_part2
 
 %.o: %.cpp $(DEPS)

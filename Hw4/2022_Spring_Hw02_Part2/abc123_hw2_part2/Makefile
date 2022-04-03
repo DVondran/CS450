@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS= -I. -O3 -fopenmp
-DEPS=hw2_part2.hpp
+DEPS=hw4_part2.hpp
 LIB=lib_%.a
 
 cpp_files=$(wildcard *.cpp)

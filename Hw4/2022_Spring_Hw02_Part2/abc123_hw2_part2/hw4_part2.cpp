@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <omp.h>
 
+//Author: David Vondran
+
 // complex algorithm for evaluation
 void matrix_mult(double *A, double *B, double *C, int N)
 {

@@ -6,6 +6,8 @@
 #include <omp.h>
 #include "sd_thread.h"
 
+//Author: David Vondran
+
 using namespace std;
 
 STDDEV_RESULT* calcSdThread(double *A, long N, int P)
