@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		get_walltime(&d_E);
 
 		// check the two matrices
-		compareOutputs(orig_C, C, N);
+		//compareOutputs(orig_C, C, N);
 		
 		// report results
 		printf("%f, %i\n", d_E - d_S, N);
