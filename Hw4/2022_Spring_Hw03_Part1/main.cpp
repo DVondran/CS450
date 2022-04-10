@@ -29,8 +29,12 @@ int main(int argc, char *argv[])
 	STDDEV_RESULT* res_serial; 
 	STDDEV_RESULT* res_thread;
 	
-	/*
-	long nvals[12] = {10e3, 15e3, 10e4, 15e4, 10e5, 15e5, 10e6, 15e6, 10e7, 15e7, 10e8, 15e8};
+	//long nvals[12] = {10e3, 15e3, 10e4, 15e4, 10e5, 15e5, 10e6, 15e6, 10e7, 15e7, 10e8, 15e8};
+	
+	long nvals[10] = {100, 300, 500, 700, 900, 1100, 1300, 1500, 1700, 2000};
+	//long nvals[10] = {10000, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000};
+	//long nvals[10] = {500000, 600000, 700000, 800000, 900000, 1000000, 1500000, 2000000, 2500000, 3000000};
+
 	
 	for(int i = 0; i < 12; i++){
 		long N = nvals[i];
@@ -102,7 +106,6 @@ int main(int argc, char *argv[])
 		delete p_serialThreshRes;
 			
 		}
-	*/
 
 /*
 	for (long ii = 0; ii < p_threadThreshRes->li_threshCount; ii++)
@@ -133,6 +136,8 @@ int main(int argc, char *argv[])
 	}
 	
 	*/
+	
+	/*
 	long N = 1000000000;
 	int P = 10;
 	double T = 999.0;
@@ -249,7 +254,7 @@ int main(int argc, char *argv[])
 	delete[] p_serialThreshRes->pli_list;
 	delete p_serialThreshRes;
 	
-	
+	*/
 	return 0;
 }
 
