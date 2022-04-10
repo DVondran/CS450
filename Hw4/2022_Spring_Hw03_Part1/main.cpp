@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
 		thread_duration = wce-wcs;
 	
 		// some simple checks
+		printf("%f, %lu\n", thread_duration, N);
 			
 			
 		THRESH_RESULT *p_serialThreshRes;
