@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	//long nvals[10] = {500000, 600000, 700000, 800000, 900000, 1000000, 1500000, 2000000, 2500000, 3000000};
 
 	
-	for(int i = 0; i < 12; i++){
+	for(int i = 0; i < 10; i++){
 		long N = nvals[i];
 		int P = 10;
 		double T = 999.0;
