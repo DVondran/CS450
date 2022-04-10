@@ -34,13 +34,14 @@ int main(int argc, char *argv[])
 	//long nvals[10] = {100, 300, 500, 700, 900, 1100, 1300, 1500, 1700, 2000};
 	//long nvals[10] = {10000, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000};
 	//long nvals[10] = {500000, 600000, 700000, 800000, 900000, 1000000, 1500000, 2000000, 2500000, 3000000};
-	long nvals[16] = {100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 10000, 15000, 30000};
+	//long nvals[16] = {100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 10000, 15000, 30000};
+	int pvals[6] = {2, 4, 5, 10, 15, 20}
 
 
 	
-	for(int i = 0; i < 16; i++){
-		long N = nvals[i];
-		int P = 10;
+	for(int i = 0; i < 6; i++){
+		long N = 1000000000;
+		int P = pvals[i];
 		double T = 999.0;
 
 		if (argc >= 2)
@@ -96,7 +97,7 @@ int main(int argc, char *argv[])
 		get_walltime(&wce);
 		thread_duration = wce-wcs;
 		
-		printf("%f, %lu\n", thread_duration, N);
+		printf("%f, %i\n", thread_duration, P);
 		
 		delete[] A;
 		delete res_serial;
