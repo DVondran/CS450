@@ -49,7 +49,6 @@ void compareOutputs(double *output1, double *output2, int length)
 
 int main(int argc, char *argv[])
 {
-	/*
 	int nvals[10] = {100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500};
 	for(int i = 0; i < 10; i++){
 		int N = nvals[i];
@@ -99,8 +98,8 @@ int main(int argc, char *argv[])
 		delete[] C;
 		delete[] orig_C;
 	}
-	*/
-
+	
+	/*
 	int N = 2000;
 
 	double d_S, d_E;
@@ -149,6 +148,6 @@ int main(int argc, char *argv[])
 	delete[] C;
 	delete[] orig_C;
 	
-
+	*/
 	return 0;
 }
