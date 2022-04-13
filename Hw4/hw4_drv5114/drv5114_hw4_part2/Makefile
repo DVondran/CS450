@@ -1,21 +1,19 @@
 CC=g++
-CFLAGS= -O3 -fopenmp
-DEPS =
-OBJ = hw4_part2_test.o 
-EXEC = hw4_part2_test
-LIB = _hw4_part2
-LIB_DIR = abc123_hw2_part2
+CFLAGS= -I. -O3 -fopenmp
+DEPS=hw4_part2.hpp
+LIB=lib_%.a
+
+cpp_files=$(wildcard *.cpp)
+a_files=$(patsubst %.cpp,$(LIB),$(cpp_files))
 
 %.o: %.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS) -I. -I./$(LIB_DIR)
+	$(CC) -c -o $@ $< $(CFLAGS);
 
-$(EXEC): $(OBJ)
-	module load gcc; \
-	cd $(LIB_DIR) && $(MAKE);
-	module load gcc; \
-	$(CC) -o $@ $^ $(CFLAGS) -L./$(LIB_DIR)/ -l$(LIB) -L.
+$(LIB): %.o
+	ar rcs $@ $<
+
+all: $(a_files)
 
 .PHONY: clean
 clean:
-	cd $(LIB_DIR) && $(MAKE) clean
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(wildcard *.o) $(wildcard *.a)

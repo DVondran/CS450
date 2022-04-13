@@ -49,7 +49,7 @@ void compareOutputs(double *output1, double *output2, int length)
 
 int main(int argc, char *argv[])
 {
-	int nvals[10] = {100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500};
+	int pvals[10] = {2, 4, 5, 10, 15, 20};
 	for(int i = 0; i < 10; i++){
 		int N = nvals[i];
 
