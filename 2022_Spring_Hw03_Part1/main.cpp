@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
 
 	
-	for(int i = 0; i < 6; i++){
+	for(int i = 0; i < 10; i++){
 		//long N = 1000000000;
 		long N = nvals[i];
 		int P = 10;
