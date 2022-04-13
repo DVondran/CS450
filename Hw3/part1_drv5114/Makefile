@@ -1,21 +1,15 @@
 CC=g++
-CFLAGS= -O3 -pthread -mavx -std=c++11
-DEPS =
-OBJ = main.o calcSd.o
-EXEC = hw3_part1
-LIB = _sd_thread
-LIB_DIR = abc123_threadSd
+CFLAGS= -I. -O3 -mavx
+DEPS = sd_thread.h
+OBJ = sd_thread.o
+LIB = lib_sd_thread.a
 
 %.o: %.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS) -I. -I./$(LIB_DIR)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(EXEC): $(OBJ)
-	module load gcc; \
-	cd $(LIB_DIR) && $(MAKE);
-	module load gcc; \
-	$(CC) -o $@ $^ $(CFLAGS) -L./$(LIB_DIR)/ -l$(LIB) -L.
+$(LIB): $(OBJ)
+	ar rcs $@ $(OBJ)
 
 .PHONY: clean
 clean:
-	cd $(LIB_DIR) && $(MAKE) clean
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(OBJ) $(LIB)
