@@ -11,9 +11,7 @@ MPI_Comm_rank(MPI_COMM_WORLD,&rank);
 dim[0]=4; dim[1]=3;
 period[0]=TRUE; period[1]=FALSE;
 reorder=TRUE;
-MPI_Cart_create(MPI_COMM_WORLD
-,2,
-dim,period,reorder,&vu);
+MPI_Cart_create(MPI_COMM_WORLD,2,dim,period,reorder,&vu);
 if(rank==9){
 MPI_Cart_shift(vu,0,1,&left,&right);
 MPI_Cart_shift(vu,1,1,&up,&down);
