@@ -68,8 +68,8 @@ echo `cat $PBS_NODEFILE`
 
 #-#-# Modules
 module purge
-module load intel  
-module load impi
+module load intel/  
+module load impi/
 # We load the modules required.  Note that loading the same modules as were used when the code was compiled is required for proper execution. We include the purge, but would comment it out if the -v directive is used with qsub to pass along the environment variables.  Please note that there is a default module that would be loaded for gcc but it is better to used the actual module rather than the default in case the default changes.
 
 ulimit -s 10240
