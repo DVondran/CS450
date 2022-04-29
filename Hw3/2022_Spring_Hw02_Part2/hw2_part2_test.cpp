@@ -75,25 +75,34 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	double serial_duration, thread_duration;
 	
+	// start benchmark
+	get_walltime(&d_S);
 
 	// run the original for functional verification
 	matrix_mult_orig(A, B, orig_C, N);
+	
+	// end benchmark
+	get_walltime(&d_E);
+	serial_duration = d_E - d_S;
 
 	// start benchmark
 	get_walltime(&d_S);
 
 	// iterative test loop
 	matrix_mult(A, B, C, N, P);
-
+	
 	// end benchmark
 	get_walltime(&d_E);
+	thread_duration = d_E - d_S;
 
 	// check the two matrices
 	compareOutputs(orig_C, C, N);
 		
 	// report results
-	printf("Elapsed time: %f\n", d_E - d_S);
+	//printf("Elapsed time: %f\n", d_E - d_S);
+	printf("Serial: %f, Threaded: %f\n", serial_duration, thread_duration);
 
 	// cleanup!
 	delete[] A;
