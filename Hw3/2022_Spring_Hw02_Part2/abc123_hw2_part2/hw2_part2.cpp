@@ -15,18 +15,18 @@ struct MYPARAM{
 	
 void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C, int N)
 {
-	int i = p_params->i_start;
-	
-	for (int j = p_params->i_start; j < p_params->i_stop; j++)
+	for(int i = p_params->i_start, i < p_params->i_stop, i++)
 	{
-		C[i * N + j] = 0;
-		for (int k = 0; k < N; k++)
+		for (int j = 0; j < N; j++)
 		{
-			C[i * N + j] += A[i * N + k] * B[k * N + j];
+			C[i * N + j] = 0;
+			for (int k = 0; k < N; k++)
+			{
+				C[i * N + j] += A[i * N + k] * B[k * N + j];
+			}
 		}
 	}
 	
-	N++;
 }
 
 
