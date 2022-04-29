@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <limits>
 
-#include <hw2_part2.hpp>
+#include "hw2_part2.hpp"
 
 void get_walltime(double* wcTime) {
 
