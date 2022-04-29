@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
 {
 
 	int N = 2000;
+	int P = 10;
 
 	double d_S, d_E;
 
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
 	get_walltime(&d_S);
 
 	// iterative test loop
-	matrix_mult(A, B, C, N);
+	matrix_mult(A, B, C, N, P);
 
 	// end benchmark
 	get_walltime(&d_E);
