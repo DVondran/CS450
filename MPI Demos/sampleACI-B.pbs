@@ -76,7 +76,8 @@ ulimit -s 10240
 
 #-#-# Directory
 echo "Current directory is `pwd`"
-cd $PBS_O_WORKDIR
+cd "/storage/home/d/drv5114/CS450/MPI Demos"
+//cd $PBS_O_WORKDIR
 echo "Current directory is `pwd`"
 # The directory you are put in to start with is your home directory. You can change to the directory directly (cd /storage/home/...) or change to the directory you submitted from using the PBS_O_WORKDIR environment variable.
 
