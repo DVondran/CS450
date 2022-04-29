@@ -13,9 +13,9 @@ struct MYPARAM{
 	int i_stop;
 	};
 	
-void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C)
+void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C, N)
 {
-	int N = p_params->i_start;
+	int i = p_params->i_start;
 	
 	for (int j = p_params->i_start; j < p_params->i_stop; j++)
 	{
@@ -46,7 +46,7 @@ void matrix_mult(double *A, double *B, double *C, int N, int P)
 	//Running the inner method on the threads
 	for (int i = 0; i < P; i++)
 	{
-		t[i] = std::thread(inner_matrix_mult, &p_params[i], A, B, C);
+		t[i] = std::thread(inner_matrix_mult, &p_params[i], A, B, C, N);
 	}
 	
 	//Joining threads
