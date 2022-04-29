@@ -39,15 +39,16 @@ echo `cat $PBS_NODEFILE`
 
 #-#-# Modules
 module purge
-module load intel/16.0.3   
-module load impi/5.1.3
+module load intel/   
+module load impi/
 # We load the modules required.  Note that loading the same modules as were used when the code was compiled is required for proper execution. We include the purge, but would comment it out if the -v directive is used with qsub to pass along the environment variables.  Please note that there is a default module that would be loaded for gcc but it is better to used the actual module rather than the default in case the default changes.
 
 ulimit -s 10240
 
 #-#-# Directory
 echo "Current directory is `pwd`"
-cd $PBS_O_WORKDIR
+cd "/storage/home/d/drv5114/CS450/MPI Demos"
+#cd $PBS_O_WORKDIR
 echo "Current directory is `pwd`"
 # The directory you are put in to start with is your home directory. You can change to the directory directly (cd /storage/home/...) or change to the directory you submitted from using the PBS_O_WORKDIR environment variable.
 
