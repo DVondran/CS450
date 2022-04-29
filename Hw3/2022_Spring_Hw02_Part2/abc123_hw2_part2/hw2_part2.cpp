@@ -6,7 +6,7 @@
 #include <thread>
 #include <chrono>
 
-#include "hw2_part2.h"
+#include "hw2_part2.hpp"
 
 struct MYPARAM{
 	int i_start;
