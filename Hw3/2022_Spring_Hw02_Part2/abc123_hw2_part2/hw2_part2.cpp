@@ -13,7 +13,7 @@ struct MYPARAM{
 	int i_stop;
 	};
 	
-void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C, N)
+void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C, int N)
 {
 	int i = p_params->i_start;
 	
