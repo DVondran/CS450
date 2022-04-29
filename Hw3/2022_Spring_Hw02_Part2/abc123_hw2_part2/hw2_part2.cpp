@@ -15,7 +15,7 @@ struct MYPARAM{
 	
 void inner_matrix_mult(struct MYPARAM *p_params, double *A, double *B, double *C, int N)
 {
-	for(int i = p_params->i_start, i < p_params->i_stop, i++)
+	for(int i = p_params->i_start; i < p_params->i_stop; i++)
 	{
 		for (int j = 0; j < N; j++)
 		{
