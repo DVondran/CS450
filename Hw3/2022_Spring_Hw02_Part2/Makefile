@@ -1,9 +1,9 @@
 CC=g++
-CFLAGS= -O3 
+CFLAGS= -O3 -pthread -mavx -std=c++11 
 DEPS =
 OBJ = hw2_part2_test.o 
 EXEC = hw2_part2_test
-LIB = _hw2_drv5114_part2
+LIB = _hw2_part2
 LIB_DIR = abc123_hw2_part2
 
 %.o: %.cpp $(DEPS)
