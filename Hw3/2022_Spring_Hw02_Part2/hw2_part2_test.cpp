@@ -110,6 +110,12 @@ int main(int argc, char *argv[])
 		// report results
 		//printf("Elapsed time: %f\n", d_E - d_S);
 		printf("Serial: %f, Threaded: %f\n", serial_duration, thread_duration);
+		
+		// cleanup!
+		delete[] A;
+		delete[] B;
+		delete[] C;
+		delete[] orig_C;
 	}
 
 	/*
@@ -164,12 +170,14 @@ int main(int argc, char *argv[])
 	//printf("Elapsed time: %f\n", d_E - d_S);
 	printf("Serial: %f, Threaded: %f\n", serial_duration, thread_duration);
 
-	*/
+	
 	// cleanup!
 	delete[] A;
 	delete[] B;
 	delete[] C;
 	delete[] orig_C;
+	
+	*/
 
 	return 0;
 }
