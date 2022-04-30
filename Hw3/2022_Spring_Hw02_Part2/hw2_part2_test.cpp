@@ -53,15 +53,15 @@ void compareOutputs(double *output1, double *output2, int length)
 int main(int argc, char *argv[])
 {
 	
-	int nvals[22] = {100, 300, 500, 700, 900, 1100, 1300, 1500, 1700, 2000, 2200, 2500, 2700, 3000, 3300, 3500, 3700, 4000, 4300, 4500, 4700, 5000};
-	//int pvals[6] = {2, 4, 5, 10, 15, 20};
+	//int nvals[22] = {100, 300, 500, 700, 900, 1100, 1300, 1500, 1700, 2000, 2200, 2500, 2700, 3000, 3300, 3500, 3700, 4000, 4300, 4500, 4700, 5000};
+	int pvals[6] = {2, 4, 5, 10, 15, 20};
 	
-	for(int tmpint = 0; tmpint < 22; tmpint++)
+	for(int tmpint = 0; tmpint < 6; tmpint++)
 	{
-		//int N = 2000;
-		int N = nvals[tmpint];
-		int P = 10;
-		//int P = pvals[tmpint];
+		int N = 2000;
+		//int N = nvals[tmpint];
+		//int P = 10;
+		int P = pvals[tmpint];
 
 		double d_S, d_E;
 
