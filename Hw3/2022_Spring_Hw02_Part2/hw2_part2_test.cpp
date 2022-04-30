@@ -83,6 +83,8 @@ int main(int argc, char *argv[])
 		}
 
 		double serial_duration, thread_duration;
+		
+		/*
 	
 		// start benchmark
 		get_walltime(&d_S);
@@ -93,6 +95,8 @@ int main(int argc, char *argv[])
 		// end benchmark
 		get_walltime(&d_E);
 		serial_duration = d_E - d_S;
+		
+		*/
 
 		// start benchmark
 		get_walltime(&d_S);
