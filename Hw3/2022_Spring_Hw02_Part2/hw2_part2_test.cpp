@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
 		
 		// report results
 		//printf("Elapsed time: %f\n", d_E - d_S);
-		printf("%i, %f\n", N, thread_duration);
+		printf("%i, %f\n", P, thread_duration);
 		
 		// cleanup!
 		delete[] A;
