@@ -105,11 +105,11 @@ int main(int argc, char *argv[])
 		thread_duration = d_E - d_S;
 
 		// check the two matrices
-		compareOutputs(orig_C, C, N);
+		//compareOutputs(orig_C, C, N);
 		
 		// report results
 		//printf("Elapsed time: %f\n", d_E - d_S);
-		printf("Serial: %f, Threaded: %f\n", serial_duration, thread_duration);
+		printf("%i, %f\n", N, thread_duration);
 		
 		// cleanup!
 		delete[] A;
